@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Demo</title>
     <base href="/" />
+    <link rel="stylesheet" href="css/app.css" />
+
+    <!-- Shoelace CSS Intializers -->
+    <link rel="stylesheet"
+          media="(prefers-color-scheme:light)"
+          href="_content/Shoelace.Style/themes/light.css" />
+    <link rel="stylesheet"
+          media="(prefers-color-scheme:dark)"
+          href="_content/Shoelace.Style/themes/dark.css"
+          onload="document.documentElement.classList.add('sl-theme-dark');" />
+
     <!-- If you add any scoped CSS files, uncomment the following to load them
     <link href="Demo.styles.css" rel="stylesheet" /> -->
     <link href="manifest.webmanifest" rel="manifest" />
@@ -28,7 +39,7 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_content/Shoelace.Style/shoelace-autoloader.js" type="module"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
-
 </html>
