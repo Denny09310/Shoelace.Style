@@ -96,6 +96,25 @@ public abstract class ShoelaceComponentBase : ComponentBase, IAsyncDisposable
     }
 
     /// <summary>
+    /// Adds an event listener to the component for a specified event type with an event argument.
+    /// </summary>
+    /// <typeparam name="TProvider">The type of event argument (e.g., MouseEventArgs, KeyboardEventArgs).</typeparam>
+    /// <param name="type">The type of the event (e.g., "click", "input").</param>
+    /// <param name="callback">The <see cref="EventCallback{T}"/> to be invoked with an argument when the event occurs.</param>
+    /// <param name="converter">The function to convert an event into a result</param>
+    protected async Task AddEventListener<TProvider, TModel>(string type, EventCallback<TModel> callback, Func<TProvider, TModel> converter)
+    {
+        if (!callback.HasDelegate || Element.Context is null)
+        {
+            return;
+        }
+
+        // Adds the event listener via JSInterop with a typed argument and stores the callback ID
+        var callbackId = await Element.AddEventListenerAsync<TProvider>(type, (e) => callback.InvokeAsync(converter(e)));
+        _callbacks.TryAdd(type, callbackId);
+    }
+
+    /// <summary>
     /// Removes all existing event listeners from the component.
     /// </summary>
     private async Task RemoveExistingCallbacks()
