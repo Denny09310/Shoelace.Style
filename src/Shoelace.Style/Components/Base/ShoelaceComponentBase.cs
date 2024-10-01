@@ -99,6 +99,7 @@ public abstract class ShoelaceComponentBase : ComponentBase, IAsyncDisposable
     /// Adds an event listener to the component for a specified event type with an event argument.
     /// </summary>
     /// <typeparam name="TProvider">The type of event argument (e.g., MouseEventArgs, KeyboardEventArgs).</typeparam>
+    /// <typeparam name="TModel">The type of the converted value</typeparam>
     /// <param name="type">The type of the event (e.g., "click", "input").</param>
     /// <param name="callback">The <see cref="EventCallback{T}"/> to be invoked with an argument when the event occurs.</param>
     /// <param name="converter">The function to convert an event into a result</param>
@@ -111,6 +112,25 @@ public abstract class ShoelaceComponentBase : ComponentBase, IAsyncDisposable
 
         // Adds the event listener via JSInterop with a typed argument and stores the callback ID
         var callbackId = await Element.AddEventListenerAsync<TProvider>(type, (e) => callback.InvokeAsync(converter(e)));
+        _callbacks.TryAdd(type, callbackId);
+    }
+
+    /// <summary>
+    /// Adds an event listener to the component for a specified event type with an event argument.
+    /// </summary>
+    /// <typeparam name="T">The type of event argument (e.g., MouseEventArgs, KeyboardEventArgs).</typeparam>
+    /// <param name="type">The type of the event (e.g., "click", "input").</param>
+    /// <param name="callback">The <see cref="EventCallback{T}"/> to be invoked with an argument when the event occurs.</param>
+    /// <param name="converter">The function to convert an event into a result</param>
+    protected async Task AddEventListener<T>(string type, EventCallback<T> callback, Func<T> converter)
+    {
+        if (!callback.HasDelegate || Element.Context is null)
+        {
+            return;
+        }
+
+        // Adds the event listener via JSInterop with a typed argument and stores the callback ID
+        var callbackId = await Element.AddEventListenerAsync(type, () => callback.InvokeAsync(converter()));
         _callbacks.TryAdd(type, callbackId);
     }
 

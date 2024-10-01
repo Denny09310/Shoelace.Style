@@ -42,8 +42,8 @@ public abstract class ShoelacePresentableBase : ShoelaceComponentBase
             await AddEventListener("sl-after-show", OnAfterShow);
             await AddEventListener("sl-after-hide", OnAfterHide);
 
-            await AddEventListener("sl-after-show", OpenChanged);
-            await AddEventListener("sl-after-hide", OpenChanged);
+            await AddEventListener("sl-after-show", OpenChanged, converter: () => Open = true);
+            await AddEventListener("sl-after-hide", OpenChanged, converter: () => Open = false);
         }
     }
 

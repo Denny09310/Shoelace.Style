@@ -6,6 +6,9 @@ namespace Shoelace.Style.Components;
 
 public partial class ShoelaceInput<TValue> : ShoelaceInputBase<TValue>
 {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
     #region Properties
 
     [Parameter]
@@ -16,9 +19,6 @@ public partial class ShoelaceInput<TValue> : ShoelaceInputBase<TValue>
 
     [Parameter]
     public bool AutoFocus { get; set; }
-
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
     public bool Clearable { get; set; }
