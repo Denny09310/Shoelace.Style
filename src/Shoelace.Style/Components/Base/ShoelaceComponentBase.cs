@@ -144,8 +144,6 @@ public abstract class ShoelaceComponentBase : ComponentBase, IAsyncDisposable
             return;
         }
 
-        Console.WriteLine("Disposing callback of {0}", GetType().Name);
-
         // Loops through all stored event listeners and removes them via JSInterop
         foreach (var callback in _callbacks)
         {
