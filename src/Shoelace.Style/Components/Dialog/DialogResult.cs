@@ -1,7 +1,7 @@
 ﻿namespace Shoelace.Style.Components;
 
 /// <summary>
-/// The result of a user's interaction with a <see cref="MudDialog"/>.
+/// The result of a user's interaction with a <see cref="ShoelaceDialog"/>.
 /// </summary>
 public class DialogResult
 {
@@ -23,6 +23,7 @@ public class DialogResult
     /// </summary>
     public bool Canceled { get; }
 
+    /// <inheritdoc />
     protected internal DialogResult(object? data, Type? resultType, bool canceled)
     {
         Data = data;

@@ -2,8 +2,17 @@
 
 namespace Shoelace.Style.Components;
 
+/// <summary>
+/// Avatars are used to represent a person or object.
+/// </summary>
+/// <remarks>
+/// <see href="https://shoelace.style/components/avatar"/>
+/// </remarks>
 public partial class ShoelaceAvatar : ShoelaceComponentBase
 {
+    /// <summary>
+    /// The content of the avatar.
+    /// </summary>
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
@@ -50,14 +59,15 @@ public partial class ShoelaceAvatar : ShoelaceComponentBase
     #region Events
 
     /// <summary>
-    /// The image could not be loaded. 
-    /// This may because of an invalid URL, a temporary network condition, or some unknown cause. 
+    /// Emitted when the image could not be loaded.
+    /// This may because of an invalid URL, a temporary network condition, or some unknown cause.
     /// </summary>
     [Parameter]
     public EventCallback OnError { get; set; }
 
     #endregion Events
 
+    /// <inheritdoc />
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);

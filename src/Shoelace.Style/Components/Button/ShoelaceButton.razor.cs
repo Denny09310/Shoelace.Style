@@ -1,9 +1,17 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
+using Shoelace.Style.Options;
 
 namespace Shoelace.Style.Components;
 
-public partial class ShoelaceButton : ShoelaceComponentBase
+/// <summary>
+/// Buttons represent actions that are available to the user.
+/// </summary>
+public partial class ShoelaceButton : ShoelaceComponentBase, IFocusable, IValidatable
 {
+    /// <summary>
+    /// The button content.
+    /// </summary>
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
@@ -152,17 +160,25 @@ public partial class ShoelaceButton : ShoelaceComponentBase
 
     #region Events
 
+    /// <summary>
+    /// Emitted when the button loses focus.
+    /// </summary>
     [Parameter]
     public EventCallback OnBlur { get; set; }
 
+    /// <summary>
+    /// Emitted when the button gains focus.
+    /// </summary>
     [Parameter]
     public EventCallback OnFocus { get; set; }
 
+    /// <inheritdoc />
     [Parameter]
     public EventCallback OnInvalid { get; set; }
 
     #endregion Events
 
+    /// <inheritdoc />
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
@@ -174,4 +190,33 @@ public partial class ShoelaceButton : ShoelaceComponentBase
             await AddEventListener("sl-invalid", OnInvalid);
         }
     }
+
+    #region Instance Methods
+
+    /// <inheritdoc />
+    public ValueTask BlurAsync() => Element.InvokeVoidAsync("blur");
+
+    /// <inheritdoc />
+    public ValueTask CheckValidityAsync() => Element.InvokeVoidAsync("checkValidity");
+
+    /// <summary>
+    /// Simulates a click on the button.
+    /// </summary>
+    public ValueTask ClickAsync() => Element.InvokeVoidAsync("click");
+
+    /// <inheritdoc />
+    public ValueTask FocusAsync(FocusOptions options) => Element.InvokeVoidAsync("focus", options);
+
+    /// <summary>
+    /// Gets the associated form, if one exists.
+    /// </summary>
+    public ValueTask GetFormAsync() => Element.InvokeVoidAsync("getForm");
+
+    /// <inheritdoc />
+    public ValueTask ReportValidityAsync() => Element.InvokeVoidAsync("reportValidity");
+
+    /// <inheritdoc />
+    public ValueTask SetCustomValidityAsync(string message) => Element.InvokeVoidAsync("setCustomValidity", message);
+
+    #endregion Instance Methods
 }

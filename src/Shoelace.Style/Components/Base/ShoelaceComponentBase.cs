@@ -150,7 +150,7 @@ public abstract class ShoelaceComponentBase : ComponentBase, IAsyncDisposable
     /// Adds an event listener to the component for a specified event type with an event argument.
     /// </summary>
     /// <param name="type">The type of the event (e.g., "click", "input").</param>
-    /// <param name="action">The function to run on event.</param>
+    /// <param name="func">The function to run on event.</param>
     protected async Task AddEventListener(string type, Func<ValueTask> func)
     {
         // Adds the event listener via JSInterop with a typed argument and stores the callback ID

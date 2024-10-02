@@ -3,7 +3,7 @@
 namespace Shoelace.Style.Components;
 
 /// <summary>
-/// The parameters passed into a <see cref="MudDialog"/> instance.
+/// The parameters passed into a <see cref="ShoelaceDialog"/> instance.
 /// </summary>
 public class DialogParameters : IEnumerable<KeyValuePair<string, object?>>
 {

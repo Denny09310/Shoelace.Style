@@ -5,10 +5,22 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Shoelace.Style.Services;
 
+/// <summary>
+/// A service for managing <see cref="ShoelaceDialog"/> components.
+/// </summary>
+/// <remarks>
+/// This service requires a <see cref="ShoelaceDialogProvider"/> in your layout page.
+/// </remarks>
 public interface IDialogService
 {
+    /// <summary>
+    /// The event to manage the added dialogs
+    /// </summary>
     event Func<IDialogReference, Task>? DialogInstanceAddedAsync;
 
+    /// <summary>
+    /// The event to manage the closed dialogs
+    /// </summary>
     event Action<IDialogReference, DialogResult?>? OnDialogCloseRequested;
 
     /// <summary>
@@ -203,6 +215,12 @@ public interface IDialogService
     Task<IDialogReference> ShowAsync([DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] Type component, string? title, DialogParameters parameters, DialogOptions options);
 }
 
+/// <summary>
+/// A service for managing <see cref="ShoelaceDialog"/> components.
+/// </summary>
+/// <remarks>
+/// This service requires a <see cref="ShoelaceDialogProvider"/> in your layout page.
+/// </remarks>
 public class DialogService : IDialogService
 {
     /// <inheritdoc />
@@ -211,6 +229,7 @@ public class DialogService : IDialogService
     /// <inheritdoc />
     public event Action<IDialogReference, DialogResult?>? OnDialogCloseRequested;
 
+    /// <inheritdoc />
     public void Close(IDialogReference dialog)
     {
         Close(dialog, DialogResult.Ok<object?>(null));
@@ -222,6 +241,7 @@ public class DialogService : IDialogService
         OnDialogCloseRequested?.Invoke(dialog, result);
     }
 
+    /// <inheritdoc />
     public virtual IDialogReference CreateReference()
     {
         return new DialogReference(Guid.NewGuid(), this);
@@ -323,6 +343,7 @@ public class DialogService : IDialogService
         return dialogReference;
     }
 
+    /// <inheritdoc />
     public Task<IDialogReference> ShowAsync<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] T>() where T : IComponent
     {
         return ShowAsync<T>(string.Empty, DialogParameters.Default, DialogOptions.Default);
@@ -417,8 +438,16 @@ public class DialogService : IDialogService
     }
 }
 
+/// <summary>
+/// Provides extension methods for adding dialog services to the service collection.
+/// </summary>
 public static class DialogServiceExtensions
 {
+    /// <summary>
+    /// Adds the dialog service to the specified service collection as a scoped service.
+    /// </summary>
+    /// <param name="services">The service collection to add the dialog service to.</param>
+    /// <returns>The updated service collection.</returns>
     public static IServiceCollection AddDialogService(this IServiceCollection services)
         => services.AddScoped<IDialogService, DialogService>();
 }

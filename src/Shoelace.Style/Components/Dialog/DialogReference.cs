@@ -21,6 +21,9 @@ public interface IDialogReference
     /// </summary>
     Guid Id { get; }
 
+    /// <summary>
+    /// A task completion source that tracks the rendering completion state of the dialog.
+    /// </summary>
     TaskCompletionSource<bool> RenderCompleteTaskCompletionSource { get; }
 
     /// <summary>
@@ -71,34 +74,50 @@ public interface IDialogReference
     void InjectRenderFragment(RenderFragment rf);
 }
 
+/// <summary>
+/// A reference to a dialog instance, used to interact with and control the dialog.
+/// </summary>
+/// <param name="instanceId">The unique identifier for the dialog instance.</param>
+/// <param name="service">The dialog service managing this dialog instance.</param>
 public class DialogReference(Guid instanceId, IDialogService service) : IDialogReference
 {
     private readonly TaskCompletionSource<DialogResult?> _result = new();
     private readonly IDialogService _service = service;
 
+    /// <inheritdoc />
     public object? Dialog { get; private set; }
+
+    /// <inheritdoc />
     public Guid Id { get; } = instanceId;
 
+    /// <inheritdoc />
     public TaskCompletionSource<bool> RenderCompleteTaskCompletionSource { get; } = new();
+
+    /// <inheritdoc />
     public RenderFragment? RenderFragment { get; set; }
 
+    /// <inheritdoc />
     public Task<DialogResult?> Result => _result.Task;
 
+    /// <inheritdoc />
     public void Close()
     {
         _service.Close(this);
     }
 
+    /// <inheritdoc />
     public void Close(DialogResult? result)
     {
         _service.Close(this, result);
     }
 
+    /// <inheritdoc />
     public virtual bool Dismiss(DialogResult? result)
     {
         return _result.TrySetResult(result);
     }
 
+    /// <inheritdoc />
     public async Task<T?> GetReturnValueAsync<[DynamicallyAccessedMembers((DynamicallyAccessedMemberTypes)(-1))] T>()
     {
         var result = await Result;
@@ -113,11 +132,13 @@ public class DialogReference(Guid instanceId, IDialogService service) : IDialogR
         }
     }
 
+    /// <inheritdoc />
     public void InjectDialog(object inst)
     {
         Dialog = inst;
     }
 
+    /// <inheritdoc />
     public void InjectRenderFragment(RenderFragment rf)
     {
         RenderFragment = rf;

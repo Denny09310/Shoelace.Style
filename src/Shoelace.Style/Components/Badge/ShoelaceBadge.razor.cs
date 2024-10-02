@@ -2,8 +2,17 @@
 
 namespace Shoelace.Style.Components;
 
+/// <summary>
+/// Badges are used to draw attention and display statuses or counts.
+/// </summary>
+/// <remarks>
+/// <see href="https://shoelace.style/components/badge"/>
+/// </remarks>
 public partial class ShoelaceBadge : ShoelaceComponentBase
 {
+    /// <summary>
+    /// The content of the badge.
+    /// </summary>
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
