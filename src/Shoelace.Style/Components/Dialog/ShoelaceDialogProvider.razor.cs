@@ -10,7 +10,11 @@ public partial class ShoelaceDialogProvider : ComponentBase, IDisposable
 
     public void DismissAll()
     {
-        _dialogs.ToList().ForEach(r => DismissInstance(r, DialogResult.Cancel()));
+        foreach (var dialog in _dialogs)
+        {
+            DismissInstance(dialog, DialogResult.Cancel());
+        }
+        
         InvokeAsync(StateHasChanged);
     }
 
