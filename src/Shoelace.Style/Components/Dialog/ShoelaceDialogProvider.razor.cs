@@ -11,7 +11,7 @@ public partial class ShoelaceDialogProvider : ComponentBase, IDisposable
     public void DismissAll()
     {
         _dialogs.ToList().ForEach(r => DismissInstance(r, DialogResult.Cancel()));
-        StateHasChanged();
+        InvokeAsync(StateHasChanged);
     }
 
     public void Dispose()
@@ -41,6 +41,8 @@ public partial class ShoelaceDialogProvider : ComponentBase, IDisposable
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        await base.OnAfterRenderAsync(firstRender);
+
         if (!firstRender)
         {
             foreach (var dialogReference in _dialogs.Where(x => !x.Result.IsCompleted))
@@ -52,17 +54,15 @@ public partial class ShoelaceDialogProvider : ComponentBase, IDisposable
         {
             await JSRuntime.InvokeVoidAsync("import", "./_content/Shoelace.Style/components/dialog/dialog.js");
         }
-
-        await base.OnAfterRenderAsync(firstRender);
     }
 
     protected override void OnInitialized()
     {
+        base.OnInitialized();
+
         DialogService.DialogInstanceAddedAsync += AddInstanceAsync;
         DialogService.OnDialogCloseRequested += DismissInstance;
         NavigationManager.LocationChanged += LocationChanged;
-
-        base.OnInitialized();
     }
 
     private Task AddInstanceAsync(IDialogReference dialog)
@@ -76,7 +76,7 @@ public partial class ShoelaceDialogProvider : ComponentBase, IDisposable
         if (!dialog.Dismiss(result)) return;
 
         _dialogs.Remove(dialog);
-        StateHasChanged();
+        InvokeAsync(StateHasChanged);
     }
 
     private IDialogReference? GetDialogReference(Guid id)
