@@ -1,0 +1,15 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelacePresentableBase
+
+<sl-alert @ref="Element"
+          @attributes="AdditionalAttributes"
+          class="@Class"
+          id="@Id"
+          style="@Style"
+          closeable="@Closable"
+          countdown="@Countdown"
+          duration="@Duration?.ToString(CultureInfo.InvariantCulture)"
+          open="@Open"
+          variant="@Variant">
+    @ChildContent
+</sl-alert>

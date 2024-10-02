@@ -1,13 +1,9 @@
-.valid.modified:not([type=checkbox]) {
-    outline: 1px solid #26b050;
+:root {
+    font-family: var(--sl-font-sans);
 }
 
-.invalid {
-    outline: 1px solid red;
-}
-
-.validation-message {
-    color: red;
+:not(:defined) {
+    visibility: hidden;
 }
 
 #blazor-error-ui {

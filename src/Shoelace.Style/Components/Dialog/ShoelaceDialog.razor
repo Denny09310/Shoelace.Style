@@ -1,0 +1,15 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelacePresentableBase
+
+<sl-dialog @ref="Element"
+           @attributes="AdditionalAttributes"
+           class="@Class"
+           id="@Id"
+           style="@Style"
+           open="@Open"
+           label="@Label"
+           no-header="@NoHeader">
+    <CascadingValue Value="this">
+        @ChildContent
+    </CascadingValue>
+</sl-dialog>
