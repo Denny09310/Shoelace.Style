@@ -7,6 +7,9 @@ namespace Shoelace.Style.Components;
 
 public abstract class ShoelaceInputBase<TValue> : ShoelaceComponentBase
 {
+    [Parameter]
+    public EventCallback<TValue> ValueChanged { get; set; }
+
     #region Properties
 
     [Parameter]
@@ -38,9 +41,6 @@ public abstract class ShoelaceInputBase<TValue> : ShoelaceComponentBase
 
     [Parameter]
     public TValue? Value { get; set; }
-
-    [Parameter]
-    public EventCallback<TValue> ValueChanged { get; set; }
 
     [Parameter]
     public Expression<Func<TValue>>? ValueExpression { get; set; }

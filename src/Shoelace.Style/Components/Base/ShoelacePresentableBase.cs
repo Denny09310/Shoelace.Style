@@ -5,13 +5,13 @@ namespace Shoelace.Style.Components;
 
 public abstract class ShoelacePresentableBase : ShoelaceComponentBase
 {
+    [Parameter]
+    public EventCallback<bool> OpenChanged { get; set; }
+
     #region Properties
 
     [Parameter]
     public bool Open { get; set; }
-
-    [Parameter]
-    public EventCallback<bool> OpenChanged { get; set; }
 
     #endregion Properties
 
