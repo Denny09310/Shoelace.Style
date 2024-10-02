@@ -54,10 +54,6 @@ public partial class ShoelaceDialogProvider : ComponentBase, IDisposable
                 dialogReference.RenderCompleteTaskCompletionSource.TrySetResult(true);
             }
         }
-        else
-        {
-            await JSRuntime.InvokeVoidAsync("import", "./_content/Shoelace.Style/components/dialog/dialog.js");
-        }
     }
 
     protected override void OnInitialized()
