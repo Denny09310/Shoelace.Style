@@ -6,5 +6,6 @@ namespace Shoelace.Style;
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddShoelaceStyle(this IServiceCollection services)
-        => services.AddToastService();
+        => services.AddToastService()
+            .AddDialogService();
 }

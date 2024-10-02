@@ -42,7 +42,7 @@ public abstract class ShoelaceComponentBase : ComponentBase, IAsyncDisposable
     /// The value will be used as the HTML <see href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id">global id attribute</see>.
     /// </summary>
     [Parameter]
-    public string? Id { get; set; }
+    public Guid? Id { get; set; }
 
     /// <summary>
     /// Optional in-line styles. If given, these will be included in the style attribute of the component.
@@ -135,6 +135,30 @@ public abstract class ShoelaceComponentBase : ComponentBase, IAsyncDisposable
     }
 
     /// <summary>
+    /// Adds an event listener to the component for a specified event type with an event argument.
+    /// </summary>
+    /// <param name="type">The type of the event (e.g., "click", "input").</param>
+    /// <param name="action">The function to run on event.</param>
+    protected async Task AddEventListener(string type, Action action)
+    {
+        // Adds the event listener via JSInterop with a typed argument and stores the callback ID
+        var callbackId = await Element.AddEventListenerAsync(type, action);
+        _callbacks.TryAdd(type, callbackId);
+    }
+
+    /// <summary>
+    /// Adds an event listener to the component for a specified event type with an event argument.
+    /// </summary>
+    /// <param name="type">The type of the event (e.g., "click", "input").</param>
+    /// <param name="action">The function to run on event.</param>
+    protected async Task AddEventListener(string type, Func<ValueTask> func)
+    {
+        // Adds the event listener via JSInterop with a typed argument and stores the callback ID
+        var callbackId = await Element.AddEventListenerAsync(type, func);
+        _callbacks.TryAdd(type, callbackId);
+    }
+
+    /// <summary>
     /// Removes all existing event listeners from the component.
     /// </summary>
     private async Task RemoveExistingCallbacks()
@@ -143,8 +167,6 @@ public abstract class ShoelaceComponentBase : ComponentBase, IAsyncDisposable
         {
             return;
         }
-
-        Console.WriteLine("Disposing callback of {0}", GetType().Name);
 
         // Loops through all stored event listeners and removes them via JSInterop
         foreach (var callback in _callbacks)

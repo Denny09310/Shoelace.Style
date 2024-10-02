@@ -8,5 +8,7 @@
            open="@Open"
            label="@Label"
            no-header="@NoHeader">
-    @ChildContent
+    <CascadingValue Value="this">
+        @ChildContent
+    </CascadingValue>
 </sl-dialog>

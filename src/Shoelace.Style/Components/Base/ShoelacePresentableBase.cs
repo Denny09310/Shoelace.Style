@@ -49,9 +49,9 @@ public abstract class ShoelacePresentableBase : ShoelaceComponentBase
 
     #region Instance Methods
 
-    public ValueTask HideAsync() => Element.InvokeVoidAsync("hide");
+    public virtual ValueTask HideAsync() => Element.InvokeVoidAsync("hide");
 
-    public ValueTask ShowAsync() => Element.InvokeVoidAsync("show");
+    public virtual ValueTask ShowAsync() => Element.InvokeVoidAsync("show");
 
     #endregion Instance Methods
 }

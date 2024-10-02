@@ -1,0 +1,11 @@
+@namespace Shoelace.Style.Components
+@inject NavigationManager NavigationManager
+@inject IDialogService DialogService
+@inject IJSRuntime JSRuntime
+
+<CascadingValue Value="this">
+    @foreach (var dialogReference in _dialogs.Where(x => !x.Result.IsCompleted))
+    {
+        @dialogReference.RenderFragment
+    }
+</CascadingValue>
