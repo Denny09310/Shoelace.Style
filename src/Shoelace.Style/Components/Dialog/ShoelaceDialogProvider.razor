@@ -1,9 +1,11 @@
 @namespace Shoelace.Style.Components
-@inject IDialogService DialogService;
+@inject NavigationManager NavigationManager
+@inject IDialogService DialogService
+@inject IJSRuntime JSRuntime
 
-@foreach (var option in Options)
-{
-    <ShoelaceDialog @key="option" Label="@option.Label" Open="@option.Open" OnRequestClose="@(() => HandleDialogClosed(option))">
-        @option.Content
-    </ShoelaceDialog>
-}
+<CascadingValue Value="this">
+    @foreach (var dialogReference in _dialogs.Where(x => !x.Result.IsCompleted))
+    {
+        @dialogReference.RenderFragment
+    }
+</CascadingValue>

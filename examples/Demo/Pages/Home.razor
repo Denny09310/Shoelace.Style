@@ -1,6 +1,3 @@
 ﻿@page "/"
-@inject IDialogService DialogService
 
 <PageTitle>Shoelace Styles Demo | Home</PageTitle>
-
-<ShoelaceButton @onclick="@(() => DialogService.ShowAsync<SampleDialog>("Sample Dialog"))">Open Dialog</ShoelaceButton>

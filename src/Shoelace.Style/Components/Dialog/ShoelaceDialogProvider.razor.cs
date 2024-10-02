@@ -1,66 +1,91 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Shoelace.Style.Options;
+using Microsoft.AspNetCore.Components.Routing;
+using Microsoft.JSInterop;
 
 namespace Shoelace.Style.Components;
 
 public partial class ShoelaceDialogProvider : ComponentBase, IDisposable
 {
-    private bool disposed;
-    private Stack<DialogOptions> Options { get; set; } = new();
+    private readonly List<IDialogReference> _dialogs = [];
+
+    public void DismissAll()
+    {
+        _dialogs.ToList().ForEach(r => DismissInstance(r, DialogResult.Cancel()));
+        StateHasChanged();
+    }
 
     public void Dispose()
     {
-        Dispose(disposing: true);
+        Dispose(true);
         GC.SuppressFinalize(this);
+    }
+
+    internal void DismissInstance(Guid id, DialogResult result)
+    {
+        var reference = GetDialogReference(id);
+        if (reference != null)
+        {
+            DismissInstance(reference, result);
+        }
     }
 
     protected virtual void Dispose(bool disposing)
     {
-        if (!disposed)
+        if (disposing)
         {
-            if (disposing)
-            {
-                DialogService.DialogInstanceAdded -= HandleDialogShowRequested;
-            }
-
-            disposed = true;
+            NavigationManager.LocationChanged -= LocationChanged;
+            DialogService.DialogInstanceAddedAsync -= AddInstanceAsync;
+            DialogService.OnDialogCloseRequested -= DismissInstance;
         }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender)
+        {
+            foreach (var dialogReference in _dialogs.Where(x => !x.Result.IsCompleted))
+            {
+                dialogReference.RenderCompleteTaskCompletionSource.TrySetResult(true);
+            }
+        }
+        else
+        {
+            await JSRuntime.InvokeVoidAsync("import", "./_content/Shoelace.Style/components/dialog/dialog.js");
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     protected override void OnInitialized()
     {
+        DialogService.DialogInstanceAddedAsync += AddInstanceAsync;
+        DialogService.OnDialogCloseRequested += DismissInstance;
+        NavigationManager.LocationChanged += LocationChanged;
+
         base.OnInitialized();
-        DialogService.DialogInstanceAdded += HandleDialogShowRequested;
     }
 
-    private async Task AnimateIn(DialogOptions options)
+    private Task AddInstanceAsync(IDialogReference dialog)
     {
-        await Task.Delay(125);
-        options.Open = true;
-        await InvokeAsync(StateHasChanged);
+        _dialogs.Add(dialog);
+        return InvokeAsync(StateHasChanged);
     }
 
-    private async Task AnimateOut(DialogOptions options)
+    private void DismissInstance(IDialogReference dialog, DialogResult? result)
     {
-        await Task.Delay(125);
-        options.Open = false;
-        await InvokeAsync(StateHasChanged);
+        if (!dialog.Dismiss(result)) return;
+
+        _dialogs.Remove(dialog);
+        StateHasChanged();
     }
 
-    private async Task HandleDialogClosed(DialogOptions options)
+    private IDialogReference? GetDialogReference(Guid id)
     {
-        options.TaskCompletionSource.SetResult(DialogResult.Cancel());
-        await AnimateOut(options);
-
-        Options.Pop();
-        await InvokeAsync(StateHasChanged);
+        return _dialogs.Find(x => x.Id == id);
     }
 
-    private async void HandleDialogShowRequested(DialogOptions options)
+    private void LocationChanged(object? sender, LocationChangedEventArgs args)
     {
-        Options.Push(options);
-        await InvokeAsync(StateHasChanged);
-
-        await AnimateIn(options);
+        DismissAll();
     }
 }
