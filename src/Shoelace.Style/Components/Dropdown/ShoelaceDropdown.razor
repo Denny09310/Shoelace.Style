@@ -1,0 +1,18 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelacePresentableBase
+
+<sl-dropdown @ref="Element"
+             @attributes="AdditionalAttributes"
+             class="@Class"
+             id="@Id"
+             style="@Style"
+             open="@Open"
+             disabled="@Disabled"
+             distance="@Distance"
+             hoist="@Hoist"
+             placement="@Placement"
+             skiddng="@Skidding"
+             stay-open-on-select="@StayOpenOnSelect"
+             sync="@Sync">
+    @ChildContent
+</sl-dropdown>
