@@ -1,0 +1,19 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelaceComponentBase
+
+<sl-format-date @attributes="AdditionalAttributes"
+                class="@Class"
+                id="@Id"
+                style="@Style"
+                date="@(Date?.ToString("o", CultureInfo.InvariantCulture))"
+                day="@Day"
+                era="@Era"
+                hour="@Hour"
+                hour-format="@HourFormat"
+                minute="@Minute"
+                month="@Month"
+                second="@Second"
+                time-zone="@TimeZone"
+                time-zone-name="@TimeZoneName"
+                weekday="@Weekday"
+                year="@Year"></sl-format-date>

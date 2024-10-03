@@ -40,7 +40,7 @@ public partial class ShoelaceAvatar : ShoelaceComponentBase
     /// Indicates how the browser should load the image.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'eager' | 'lazy'.
+    /// Possible values are 'eager' | 'lazy'.
     /// </remarks>
     [Parameter]
     public string? Loading { get; set; }
@@ -49,7 +49,7 @@ public partial class ShoelaceAvatar : ShoelaceComponentBase
     /// The shape of the avatar.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'circle' | 'square' | 'rounded'
+    /// Possible values are 'circle' | 'square' | 'rounded'
     /// </remarks>
     [Parameter]
     public string? Shape { get; set; }

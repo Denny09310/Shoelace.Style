@@ -171,7 +171,7 @@ public partial class ShoelaceInput<TValue> : ShoelaceInputBase<TValue>, ISelecta
     /// The type of input. Works the same as a native &lt;input&gt; element, but only a subset of types are supported. Defaults to text.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'date' | 'datetime-local' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url'
+    /// Possible values are 'date' | 'datetime-local' | 'email' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url'
     /// </remarks>
     [Parameter]
     public string? Type { get; set; }
