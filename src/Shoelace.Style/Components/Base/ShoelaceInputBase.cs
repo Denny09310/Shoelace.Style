@@ -10,13 +10,13 @@ namespace Shoelace.Style.Components;
 /// It provides support for handling additional HTML attributes, CSS classes, styles,
 /// and event listeners on the component.
 /// </summary>
-public abstract class ShoelaceInputBase<TValue> : ShoelaceComponentBase, IValidatable
+public abstract class ShoelaceInputBase<T> : ShoelaceComponentBase, IValidatable
 {
     /// <summary>
     /// Emitted when the value of the element changes.
     /// </summary>
     [Parameter]
-    public EventCallback<TValue> ValueChanged { get; set; }
+    public EventCallback<T> ValueChanged { get; set; }
 
     #region Properties
 
@@ -27,7 +27,7 @@ public abstract class ShoelaceInputBase<TValue> : ShoelaceComponentBase, IValida
     /// Primarily used for resetting the form control.
     /// </remarks>
     [Parameter]
-    public TValue? DefaultValue { get; set; }
+    public T? DefaultValue { get; set; }
 
     /// <summary>
     /// Disables the input.
@@ -89,11 +89,11 @@ public abstract class ShoelaceInputBase<TValue> : ShoelaceComponentBase, IValida
     /// The current value of the input, submitted as a name/value pair with form data.
     /// </summary>
     [Parameter]
-    public TValue? Value { get; set; }
+    public T? Value { get; set; }
 
     /// <inheritdoc />
     [Parameter]
-    public Expression<Func<TValue>>? ValueExpression { get; set; }
+    public Expression<Func<T>>? ValueExpression { get; set; }
 
     #endregion Properties
 
@@ -103,13 +103,13 @@ public abstract class ShoelaceInputBase<TValue> : ShoelaceComponentBase, IValida
     /// Emitted when an alteration to the control’s value is committed by the user.
     /// </summary>
     [Parameter]
-    public EventCallback<ShoelaceChangeEventArgs<TValue>> OnChange { get; set; }
+    public EventCallback<ShoelaceChangeEventArgs<T>> OnChange { get; set; }
 
     /// <summary>
     /// Emitted when the control receives input.
     /// </summary>
     [Parameter]
-    public EventCallback<ShoelaceChangeEventArgs<TValue>> OnInput { get; set; }
+    public EventCallback<ShoelaceChangeEventArgs<T>> OnInput { get; set; }
 
     /// <inheritdoc />
     [Parameter]
@@ -128,7 +128,7 @@ public abstract class ShoelaceInputBase<TValue> : ShoelaceComponentBase, IValida
             await AddEventListener("sl-input", OnInput);
             await AddEventListener("sl-invalid", OnInvalid);
 
-            await AddEventListener<ShoelaceChangeEventArgs<TValue>, TValue>(Immediate ? "sl-input" : "sl-change", ValueChanged, (e) => e.Target.Value);
+            await AddEventListener<ShoelaceChangeEventArgs<T>, T>(Immediate ? "sl-input" : "sl-change", ValueChanged, (e) => e.Target.Value);
         }
     }
 

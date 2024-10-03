@@ -10,8 +10,8 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/input"/>
 /// </remarks>
-/// <typeparam name="TValue">The type of the value attribute</typeparam>
-public partial class ShoelaceInput<TValue> : ShoelaceInputBase<TValue>, ISelectable
+/// <typeparam name="T">The type of the value attribute</typeparam>
+public partial class ShoelaceInput<T> : ShoelaceInputBase<T>, ISelectable
 {
     /// <summary>
     /// The content of the input.
