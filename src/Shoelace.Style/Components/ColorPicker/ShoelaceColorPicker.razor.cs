@@ -4,6 +4,12 @@ using Shoelace.Style.Options;
 
 namespace Shoelace.Style.Components;
 
+/// <summary>
+/// Color pickers allow the user to select a color.
+/// </summary>
+/// <remarks>
+/// <see href="https://shoelace.style/components/color-picker"/>
+/// </remarks>
 public partial class ShoelaceColorPicker : ShoelaceInputBase<string>, IFocusable
 {
     #region Properties
