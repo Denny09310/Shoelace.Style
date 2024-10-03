@@ -24,7 +24,7 @@ public partial class ShoelaceFormatDate : ShoelaceComponentBase
     /// The format for displaying the day.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'numeric' | '2-digit'
+    /// Possible values are 'numeric' | '2-digit'
     /// </remarks>
     [Parameter]
     public string? Day { get; set; }
@@ -33,7 +33,7 @@ public partial class ShoelaceFormatDate : ShoelaceComponentBase
     /// The format for displaying the era.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'narrow' | 'short' | 'long'
+    /// Possible values are 'narrow' | 'short' | 'long'
     /// </remarks>
     [Parameter]
     public string? Era { get; set; }
@@ -42,7 +42,7 @@ public partial class ShoelaceFormatDate : ShoelaceComponentBase
     /// The format for displaying the hour.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'numeric' | '2-digit'
+    /// Possible values are 'numeric' | '2-digit'
     /// </remarks>
     [Parameter]
     public string? Hour { get; set; }
@@ -51,7 +51,7 @@ public partial class ShoelaceFormatDate : ShoelaceComponentBase
     /// The format for displaying the hour.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'auto' | '12' | '24'
+    /// Possible values are 'auto' | '12' | '24'
     /// </remarks>
     [Parameter]
     public string? HourFormat { get; set; }
@@ -60,7 +60,7 @@ public partial class ShoelaceFormatDate : ShoelaceComponentBase
     /// The format for displaying the minute.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'numeric' | '2-digit'
+    /// Possible values are 'numeric' | '2-digit'
     /// </remarks>
     [Parameter]
     public string? Minute { get; set; }
@@ -69,7 +69,7 @@ public partial class ShoelaceFormatDate : ShoelaceComponentBase
     /// The format for displaying the month.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'numeric' | '2-digit' | 'narrow' | 'short' | 'long'
+    /// Possible values are 'numeric' | '2-digit' | 'narrow' | 'short' | 'long'
     /// </remarks>
     [Parameter]
     public string? Month { get; set; }
@@ -78,7 +78,7 @@ public partial class ShoelaceFormatDate : ShoelaceComponentBase
     /// The format for displaying the second.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'numeric' | '2-digit'
+    /// Possible values are 'numeric' | '2-digit'
     /// </remarks>
     [Parameter]
     public string? Second { get; set; }
@@ -93,7 +93,7 @@ public partial class ShoelaceFormatDate : ShoelaceComponentBase
     /// The format for displaying the time.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'short' | 'long'
+    /// Possible values are 'short' | 'long'
     /// </remarks>
     [Parameter]
     public string? TimeZoneName { get; set; }
@@ -102,7 +102,7 @@ public partial class ShoelaceFormatDate : ShoelaceComponentBase
     /// The format for displaying the weekday.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'narrow' | 'short' | 'long'
+    /// Possible values are 'narrow' | 'short' | 'long'
     /// </remarks>
     [Parameter]
     public string? Weekday { get; set; }
@@ -111,7 +111,7 @@ public partial class ShoelaceFormatDate : ShoelaceComponentBase
     /// The format for displaying the year.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'numeric' | '2-digit'
+    /// Possible values are 'numeric' | '2-digit'
     /// </remarks>
     [Parameter]
     public string? Year { get; set; }

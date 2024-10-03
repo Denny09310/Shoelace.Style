@@ -80,7 +80,7 @@ public abstract class ShoelaceInputBase<TValue> : ShoelaceComponentBase, IValida
     /// The input’s size.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'small' | 'medium' | 'large'
+    /// Possible values are 'small' | 'medium' | 'large'
     /// </remarks>
     [Parameter]
     public string? Size { get; set; }

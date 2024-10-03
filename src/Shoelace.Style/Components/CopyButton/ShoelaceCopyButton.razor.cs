@@ -71,7 +71,7 @@ public partial class ShoelaceCopyButton : ShoelaceComponentBase
     /// The preferred placement of the tooltip.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'top' | 'right' | 'bottom' | 'left'
+    /// Possible values are 'top' | 'right' | 'bottom' | 'left'
     /// </remarks>
     [Parameter]
     public string? TooltipPlacement { get; set; }

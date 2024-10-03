@@ -34,7 +34,7 @@ public partial class ShoelaceBadge : ShoelaceComponentBase
     /// The badge’s theme variant.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'primary' | 'success' | 'neutral' | 'warning' | 'danger'
+    /// Possible values are 'primary' | 'success' | 'neutral' | 'warning' | 'danger'
     /// </remarks>
     [Parameter]
     public string? Variant { get; set; }

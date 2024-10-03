@@ -22,7 +22,7 @@ public partial class ShoelaceFormatBytes : ShoelaceComponentBase
     /// The type of unit to display.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'byte' | 'bit'
+    /// Possible values are 'byte' | 'bit'
     /// </remarks>
     [Parameter]
     public string? Unit { get; set; }
@@ -31,7 +31,7 @@ public partial class ShoelaceFormatBytes : ShoelaceComponentBase
     /// The number to format in bytes.
     /// </summary>
     /// <remarks>
-    /// Valid values are 'long' | 'short' | 'narrow'
+    /// Possible values are 'long' | 'short' | 'narrow'
     /// </remarks>
     [Parameter]
     public double? Value { get; set; }
