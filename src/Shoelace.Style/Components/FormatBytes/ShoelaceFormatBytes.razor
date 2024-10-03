@@ -1,0 +1,7 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelaceComponentBase
+
+<sl-format-bytes @attributes="AdditionalAttributes"
+                 display="@Display"
+                 unit="@Unit"
+                 value="@Value?.ToString(CultureInfo.InvariantCulture)"></sl-format-bytes>
