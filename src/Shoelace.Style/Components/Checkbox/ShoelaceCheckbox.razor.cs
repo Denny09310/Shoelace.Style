@@ -9,7 +9,7 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/card"/>
 /// </remarks>
-public partial class ShoelaceCheckbox : ShoelaceInputBase<bool>
+public partial class ShoelaceCheckbox : ShoelaceInputBase<string>
 {
     /// <summary>
     /// Emitted when the attribute checked change.
@@ -48,7 +48,7 @@ public partial class ShoelaceCheckbox : ShoelaceInputBase<bool>
 
         if (firstRender)
         {
-            await AddEventListener<ShoelaceChangeEventArgs<string>, bool>(Immediate ? "sl-input" : "sl-change", CheckedChanged, (e) => e.Target.Checked);
+            await AddEventListener<ShoelaceChangeEventArgs<string>, bool>("sl-change", CheckedChanged, (e) => e.Target.Checked);
         }
     }
 }

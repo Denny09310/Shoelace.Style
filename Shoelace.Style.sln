@@ -5,9 +5,9 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shoelace.Style", "src\Shoelace.Style\Shoelace.Style.csproj", "{248ECF1D-1959-420A-BA2C-B8A33FEE8F75}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{9CF6A12B-57A9-4B9E-9064-C79AFE8D44B9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{9CF6A12B-57A9-4B9E-9064-C79AFE8D44B9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo", "examples\Demo\Demo.csproj", "{072CDB23-6331-4147-BB89-E34F084B159F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo", "samples\Demo\Demo.csproj", "{072CDB23-6331-4147-BB89-E34F084B159F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5982BB01-1537-4C0C-B4CF-191CAF0DDDA3}"
 EndProject
