@@ -11,7 +11,7 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/rating"/>
 /// </remarks>
-public partial class ShoelaceRange : ShoelaceInputBase<double>, IFocusable
+public partial class ShoelaceRating : ShoelaceInputBase<double>, IFocusable
 {
     #region Properties
 
