@@ -1,0 +1,15 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelaceRadio<T>
+@typeparam T
+
+<sl-radio-button @ref="Element"
+                 @attributes="AdditionalAttributes"
+                 class="@Class"
+                 id="@Id"
+                 style="@Style"
+                 disabled="@Disabled"
+                 size="@Size"
+                 value="@Value"
+                 pill="@Pill">
+    @ChildContent
+</sl-radio-button>
