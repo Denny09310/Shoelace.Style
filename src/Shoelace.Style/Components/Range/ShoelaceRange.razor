@@ -1,0 +1,21 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelaceInputBase<double>
+
+<sl-range @ref="Element"
+          @attributes="AdditionalAttributes"
+          class="@Class"
+          id="@Id"
+          style="@Style"
+          name="@Name"
+          value="@Value"
+          label="@Label"
+          help-text="@HelpText"
+          disabled="@Disabled"
+          min="@Min"
+          max="@Max"
+          step="@Step"
+          tooltip="@Tooltip"
+          form="@Form"
+          default-value="@DefaultValue">
+    @ChildContent
+</sl-range>
