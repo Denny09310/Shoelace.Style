@@ -1,0 +1,18 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelacePresentableBase
+
+<sl-tooltip @ref="Element"
+            @attributes="AdditionalAttributes"
+            class="@Class"
+            id="@Id"
+            style="@Style"
+            open="@Open"
+            content="@Content"
+            disabled="@Disabled"
+            distance="@Distance"
+            hoist="@Hoist"
+            placement="@Placement"
+            skidding="@Skidding"
+            trigger="@Trigger">
+    @ChildContent
+</sl-tooltip>
