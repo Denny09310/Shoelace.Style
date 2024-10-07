@@ -1,0 +1,11 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelaceComponentBase
+
+<sl-relative-time @attributes="AdditionalAttributes"
+                  class="@Class"
+                  id="@Id"
+                  style="@Style"
+                  date="@(Date.ToString("o", CultureInfo.InvariantCulture))"
+                  format="@Format"
+                  numeric="@Numeric"
+                  sync="@Sync"></sl-relative-time>

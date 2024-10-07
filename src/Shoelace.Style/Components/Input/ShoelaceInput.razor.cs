@@ -10,8 +10,8 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/input"/>
 /// </remarks>
-/// <typeparam name="TValue">The type of the value attribute</typeparam>
-public partial class ShoelaceInput<TValue> : ShoelaceInputBase<TValue>, ISelectable
+/// <typeparam name="T">The type of the value attribute</typeparam>
+public partial class ShoelaceInput<T> : ShoelaceInputBase<T>, ISelectable, IClearable
 {
     /// <summary>
     /// The content of the input.
@@ -48,9 +48,7 @@ public partial class ShoelaceInput<TValue> : ShoelaceInputBase<TValue>, ISelecta
     [Parameter]
     public bool AutoFocus { get; set; }
 
-    /// <summary>
-    /// Adds a clear button when the input is not empty.
-    /// </summary>
+    /// <inheritdoc />
     [Parameter]
     public bool Clearable { get; set; }
 
@@ -180,9 +178,7 @@ public partial class ShoelaceInput<TValue> : ShoelaceInputBase<TValue>, ISelecta
 
     #region Events
 
-    /// <summary>
-    /// Emitted when the clear button is activated.
-    /// </summary>
+    /// <inheritdoc />
     [Parameter]
     public EventCallback OnClear { get; set; }
 

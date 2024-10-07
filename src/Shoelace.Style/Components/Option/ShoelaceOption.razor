@@ -1,0 +1,13 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelaceComponentBase
+@typeparam T
+
+<sl-option @ref="Element"
+           @attributes="AdditionalAttributes"
+           class="@Class"
+           id="@Id"
+           style="@Style"
+           disabled="@Disabled"
+           value="@Value">
+    @ChildContent
+</sl-option>

@@ -1,0 +1,18 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelaceInputBase<T>
+@typeparam T
+
+<sl-radio-group @ref="Element"
+                @attributes="AdditionalAttributes"
+                id="@Id"
+                class="@Class"
+                style="@Style"
+                form="@Form"
+                help-text="@HelpText"
+                label="@Label"
+                name="@Name"
+                required="@Required"
+                size="@Size"
+                value="@Value">
+    @ChildContent
+</sl-radio-group>

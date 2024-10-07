@@ -1,0 +1,29 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelaceInputBase<T>
+@typeparam T
+
+<sl-select @ref="Element"
+           @attributes="AdditionalAttributes"
+           id="@Id"
+           class="@Class"
+           style="@Style"
+           default-value="@DefaultValue"
+           disabled="@Disabled"
+           form="@Form"
+           help-text="@HelpText"
+           label="@Label"
+           name="@Name"
+           required="@Required"
+           size="@Size"
+           value="@(Value is IEnumerable<object> enumerable ? string.Join(" ", enumerable) : Value)"
+           clearable="@Clearable"
+           filled="@Filled"
+           hoist="@Hoist"
+           max-options-visible="@MaxOptionsVisible"
+           multiple="@Multiple"
+           open="@Open"
+           pill="@Pill"
+           placeholder="@Placeholder"
+           placement="@Placement">
+    @ChildContent
+</sl-select>
