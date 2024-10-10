@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2024-10-10
+
+### 🚀 Features
+
+- Add sl-resize-observer
+- Add sl-switch
+- Add sl-textarea
+- Add sl-tooltip
+
+### 🐛 Bug Fixes
+
+- Attribute 'readonly' missing on sl-input
+
+### ⚙️ Miscellaneous Tasks
+
+- Format code style
+
 ## [1.2.0] - 2024-10-07
 
 ### 🚀 Features
@@ -26,6 +43,7 @@ All notable changes to this project will be documented in this file.
 
 - Update README.md
 - Change 'TValue' to only 'T'
+- Versioning
 
 ## [1.1.0] - 2024-10-03
 
