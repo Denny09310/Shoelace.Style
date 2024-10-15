@@ -52,7 +52,7 @@ This repository contains Blazor components built on top of the [Shoelace](https:
    ```
 
    ``` html
-    <script src="shoelace/cdn/themes/shoelace-autoloader.min.js" type="module" data-shoelace="/shoelace/cdn"></script>
+    <script src="shoelace/cdn/shoelace-autoloader.min.js" type="module" data-shoelace="/shoelace/cdn"></script>
    ```
 
    Or follow the instructions in the [Installation](https://shoelace.style/getting-started/installation) page of the main site.
