@@ -101,15 +101,15 @@ public partial class ShoelaceCopyButton : ShoelaceComponentBase
 
     #endregion Events
 
-    /// <inheritdoc />
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await base.OnAfterRenderAsync(firstRender);
+    /// <summary>
+    /// Handler for OnCopy event.
+    /// </summary>
+    /// <returns></returns>
+    protected virtual async Task CopyHandlerAsync() => await OnCopy.InvokeAsync();
 
-        if (firstRender)
-        {
-            await AddEventListener("sl-copy", OnCopy);
-            await AddEventListener("sl-error", OnError);
-        }
-    }
+    /// <summary>
+    /// Handler for OnError event.
+    /// </summary>
+    /// <returns></returns>
+    protected virtual async Task ErrorHandlerAsync() => await OnError.InvokeAsync();
 }

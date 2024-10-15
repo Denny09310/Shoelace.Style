@@ -13,6 +13,10 @@
              placement="@Placement"
              skiddng="@Skidding"
              stay-open-on-select="@StayOpenOnSelect"
-             sync="@Sync">
+             sync="@Sync"
+             @onslshow="ShowHandlerAsync"
+             @onslaftershow="AfterShowHandlerAsync"
+             @onslhide="HideHandlerAsync"
+             @onslafterhide="AfterHideHandlerAsync">
     @ChildContent
 </sl-dropdown>

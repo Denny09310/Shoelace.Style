@@ -9,4 +9,6 @@
                    alt="@Alt"
                    src="@Src"
                    play="@Play"
-                   @onclick="HandleClick"></sl-animated-image>
+                   @onslload="LoadHandlerAsync"
+                   @onslerror="ErrorHandlerAsync"
+                   @onplaychange="PlayChangeHandlerAsync"></sl-animated-image>

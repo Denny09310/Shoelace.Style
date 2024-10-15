@@ -60,7 +60,7 @@ public partial class ShoelaceDialog : ShoelacePresentableBase
     /// Avoid using this unless closing the dialog will result in destructive behavior such as data loss.
     /// </summary>
     [Parameter]
-    public EventCallback<ShoelaceRequestCloseEvent> OnRequestClose { get; set; }
+    public EventCallback<RequestCloseEventArgs> OnRequestClose { get; set; }
 
     #endregion Events
 
@@ -94,7 +94,7 @@ public partial class ShoelaceDialog : ShoelacePresentableBase
     /// </remarks>
     public async ValueTask CloseAsync(DialogResult result)
     {
-        if (Id is null || Id == Guid.Empty)
+        if (string.IsNullOrWhiteSpace(Id))
         {
             throw new ArgumentException("The Id should be a valid GUID");
         }
@@ -102,27 +102,36 @@ public partial class ShoelaceDialog : ShoelacePresentableBase
         await SetOpen(false);
         await Task.Delay(125);
 
-        Provider?.DismissInstance(Id.Value, result);
+        Provider?.DismissInstance(Id, result);
     }
+
+
+    /// <summary>
+    /// Handler for OnInitialFocuse event.
+    /// </summary>
+    /// <returns></returns>
+    protected virtual async Task InitialFocusHandlerAsync() => await OnInitialFocus.InvokeAsync();
 
     /// <inheritdoc />
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
 
-        if (firstRender)
+        if (firstRender && Provider != null)
         {
-            await AddEventListener("sl-initial-focus", OnInitialFocus);
-            await AddEventListener("sl-request-close", OnRequestClose);
-
-            await AddEventListener("sl-request-close", CloseAsync);
-
-            if (Provider is not null)
-            {
-                await Task.Delay(125);
-                await SetOpen(true);
-            }
+            await Task.Delay(125);
+            await SetOpen(true);
         }
+    }
+
+    /// <summary>
+    /// Handler for OnRequestClose event.
+    /// </summary>
+    /// <returns></returns>
+    protected virtual async Task RequestCloseHandlerAsync(RequestCloseEventArgs e)
+    {
+        await OnRequestClose.InvokeAsync(e);
+        await CloseAsync();
     }
 
     private async Task SetOpen(bool open)

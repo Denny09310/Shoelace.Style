@@ -8,6 +8,10 @@
             style="@Style"
             open="@Open"
             disabled="@Disabled"
-            summary="@Summary">
+            summary="@Summary"
+            @onslshow="ShowHandlerAsync"
+            @onslaftershow="AfterShowHandlerAsync"
+            @onslhide="HideHandlerAsync"
+            @onslafterhide="AfterHideHandlerAsync">
     @ChildContent
 </sl-details>

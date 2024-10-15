@@ -1,5 +1,17 @@
 const events = [
     {
+        name: 'slcopy',
+        browserEventName: 'sl-copy',
+    },
+    {
+        name: 'slload',
+        browserEventName: 'sl-load',
+    },
+    {
+        name: 'slerror',
+        browserEventName: 'sl-error',
+    },
+    {
         name: 'slblur',
         browserEventName: 'sl-blur',
     },
@@ -8,27 +20,72 @@ const events = [
         browserEventName: 'sl-invalid',
     },
     {
+        name: 'slclear',
+        browserEventName: 'sl-clear',
+    },
+    {
+        name: 'slhover',
+        browserEventName: 'sl-hover',
+        createEventArgs: ({ detail }) => ({
+            Phase: detail.phase,
+            Value: detail.value,
+        })
+    },
+    {
         name: 'slfocus',
         browserEventName: 'sl-focus',
-        createEventArgs: event => ({
-            Type: event.type
+        createEventArgs: ({ type }) => ({
+            Type: type
         })
     },
     {
         name: 'slchange',
         browserEventName: 'sl-change',
-        createEventArgs: event => ({
-            Value: event.target.value
+        createEventArgs: ({ target }) => ({
+            Value: target.value
+        })
+    },
+    {
+        name: 'slcheckedchange',
+        browserEventName: 'sl-change',
+        createEventArgs: ({ target }) => ({
+            Checked: target.checked
         })
     },
     {
         name: 'slinput',
         browserEventName: 'sl-input',
-        createEventArgs: event => ({
-            Value: event.target.value
+        createEventArgs: ({ target }) => ({
+            Value: target.value
         })
-    }
+    },
+    {
+        name: 'slresize',
+        browserEventName: 'sl-resize',
+        createEventArgs: ({ entries }) => {
+            const mapSizes = (sizes) => sizes.map(size => ({
+                BlockSize: size.blockSize,
+                InnerSize: size.innerSize,
+            }));
+
+            return {
+                Entries: entries.map(entry => ({
+                    BorderBoxSize: mapSizes(entry.borderBoxSize),
+                    ContentBoxSize: mapSizes(entry.contentBoxSize)
+                }))
+            }
+        }
+    },
 ];
+
+export function beforeStart() {
+    const stylesheet = document.createElement('link');
+
+    stylesheet.rel = "stylesheet";
+    stylesheet.href = "_content/Shoelace.Style/index.css"
+
+    document.head.appendChild(stylesheet);
+}
 
 export function afterStarted(blazor) {
     events.forEach(event => {

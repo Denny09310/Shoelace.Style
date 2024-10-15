@@ -9,6 +9,8 @@
           style="@Style"
           disabled="@Disabled"
           size="@Size"
-          value="@Value">
+          value="@Value"
+          @onslblur="BlurHandlerAsync"
+          @onslfocus="FocusHandlerAsync">
     @ChildContent
 </sl-radio>

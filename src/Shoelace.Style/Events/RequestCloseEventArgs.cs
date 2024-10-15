@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents an event that requests the closing of a Shoelace dialog.
 /// </summary>
-public class ShoelaceRequestCloseEvent
+public class RequestCloseEventArgs : EventArgs
 {
     /// <summary>
     /// Gets or sets the source of the close request.

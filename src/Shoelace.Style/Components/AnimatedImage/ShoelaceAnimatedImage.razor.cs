@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.JSInterop;
+using Shoelace.Style.Events;
 
 namespace Shoelace.Style.Components;
 
@@ -56,21 +55,21 @@ public partial class ShoelaceAnimatedImage : ShoelaceComponentBase
 
     #endregion Events
 
-    /// <inheritdoc />
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await base.OnAfterRenderAsync(firstRender);
+    /// <summary>
+    /// Handler for the OnError event
+    /// </summary>
+    /// <returns></returns>
+    protected virtual async Task ErrorHandlerAsync() => await OnError.InvokeAsync();
 
-        if (firstRender)
-        {
-            await AddEventListener("sl-error", OnError);
-            await AddEventListener("sl-load", OnLoad);
-        }
-    }
+    /// <summary>
+    /// Handler for the OnLoad event
+    /// </summary>
+    /// <returns></returns>
+    protected virtual async Task LoadHandlerAsync() => await OnLoad.InvokeAsync();
 
-    private async Task HandleClick(MouseEventArgs e)
+    private async Task PlayChangeHandlerAsync(PlayChangeEventArgs e)
     {
-        Play = await Element.GetPropertyAsync<bool>("play");
+        Play = e.Play;
         await PlayChanged.InvokeAsync(Play);
     }
 }

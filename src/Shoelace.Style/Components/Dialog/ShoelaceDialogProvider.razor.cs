@@ -37,7 +37,7 @@ public partial class ShoelaceDialogProvider : ComponentBase, IDisposable
     /// </summary>
     /// <param name="id">The unique identifier of the dialog to dismiss.</param>
     /// <param name="result">The result to return from the dismissed dialog.</param>
-    internal void DismissInstance(Guid id, DialogResult result)
+    internal void DismissInstance(string id, DialogResult result)
     {
         var reference = GetDialogReference(id);
         if (reference != null)
@@ -119,7 +119,7 @@ public partial class ShoelaceDialogProvider : ComponentBase, IDisposable
     /// </summary>
     /// <param name="id">The unique identifier of the dialog.</param>
     /// <returns>The dialog reference, or <c>null</c> if not found.</returns>
-    private IDialogReference? GetDialogReference(Guid id)
+    private IDialogReference? GetDialogReference(string id)
     {
         return _dialogs.Find(x => x.Id == id);
     }
