@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.JSInterop;
 using Shoelace.Style.Utilities;
+using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
 
@@ -376,7 +377,7 @@ public abstract partial class ShoelaceInputBase<TValue> : ShoelaceComponentBase,
         return newDictionaryCreated;
     }
 
-    private void OnValidateStateChanged(object? sender, ValidationStateChangedEventArgs eventArgs)
+    private void OnValidateStateChanged(object? sender, ValidationStateChangedEventArgs e)
     {
         UpdateAdditionalValidationAttributes();
         InvokeAsync(StateHasChanged);
@@ -389,7 +390,7 @@ public abstract partial class ShoelaceInputBase<TValue> : ShoelaceComponentBase,
             return;
         }
 
-        var hasAriaInvalidAttribute = AdditionalAttributes != null && AdditionalAttributes.ContainsKey("aria-invalid");
+        var hasAriaInvalidAttribute = AdditionalAttributes != null && AdditionalAttributes.ContainsKey("data-invalid");
         if (FieldBound && EditContext.GetValidationMessages(FieldIdentifier).Any())
         {
             if (hasAriaInvalidAttribute)
@@ -404,17 +405,18 @@ public abstract partial class ShoelaceInputBase<TValue> : ShoelaceComponentBase,
             }
 
             // To make the `Input` components accessible by default
-            // we will automatically render the `aria-invalid` attribute when the validation fails
-            // value must be "true" see https://www.w3.org/TR/wai-aria-1.1/#aria-invalid
-            additionalAttributes["aria-invalid"] = "true";
+            // we will automatically render the `data-invalid` attribute when the validation fails
+            // value must be "true" see https://www.w3.org/TR/wai-aria-1.1/#data-invalid
+            additionalAttributes["data-invalid"] = "true";
+            additionalAttributes.Remove("data-valid");
         }
         else if (hasAriaInvalidAttribute)
         {
-            // No validation errors. Need to remove `aria-invalid` if it was rendered already
+            // No validation errors. Need to remove `data-invalid` if it was rendered already
 
             if (AdditionalAttributes!.Count == 1)
             {
-                // Only aria-invalid argument is present which we don't need any more
+                // Only data-invalid argument is present which we don't need any more
                 AdditionalAttributes = null;
             }
             else
@@ -424,7 +426,8 @@ public abstract partial class ShoelaceInputBase<TValue> : ShoelaceComponentBase,
                     AdditionalAttributes = additionalAttributes;
                 }
 
-                additionalAttributes.Remove("aria-invalid");
+                additionalAttributes["data-valid"] = "true";
+                additionalAttributes.Remove("data-invalid");
             }
         }
     }
