@@ -4,6 +4,22 @@ const events = [
         browserEventName: 'sl-copy',
     },
     {
+        name: 'slshow',
+        browserEventName: 'sl-show',
+    },
+    {
+        name: 'slaftershow',
+        browserEventName: 'sl-after-show',
+    },
+    {
+        name: 'slhide',
+        browserEventName: 'sl-hide',
+    },
+    {
+        name: 'slafterhide',
+        browserEventName: 'sl-after-hide',
+    },
+    {
         name: 'slload',
         browserEventName: 'sl-load',
     },
@@ -22,6 +38,24 @@ const events = [
     {
         name: 'slclear',
         browserEventName: 'sl-clear',
+    },
+    {
+        name: 'slinitialfocus',
+        browserEventName: 'sl-initial-focus',
+    },
+    {
+        name: 'slrequestclose',
+        browserEventName: 'sl-request-close',
+        createEventArgs: ({ detail }) => ({
+            Source: detail.source
+        })
+    },
+    {
+        name: 'slplaychange',
+        browserEventName: 'click',
+        createEventArgs: ({ target }) => ({
+            Play: target.play
+        })
     },
     {
         name: 'slhover',
