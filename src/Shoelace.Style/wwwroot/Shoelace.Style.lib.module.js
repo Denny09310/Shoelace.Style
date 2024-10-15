@@ -66,6 +66,14 @@ const events = [
         })
     },
     {
+        name: 'slselect',
+        browserEventName: 'sl-select',
+        createEventArgs: ({ detail }) => ({
+            Value: detail.item.value,
+            Checked: detail.item.checked
+        })
+    },
+    {
         name: 'slchange',
         browserEventName: 'sl-change',
         createEventArgs: ({ target }) => ({

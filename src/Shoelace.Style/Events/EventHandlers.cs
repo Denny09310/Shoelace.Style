@@ -26,5 +26,6 @@ namespace Shoelace.Style.Events;
 [EventHandler("onslinitialfocus", typeof(EventArgs), true, true)]
 [EventHandler("onslrequestclose", typeof(RequestCloseEventArgs), true, true)]
 [EventHandler("onslresize", typeof(ResizeEventArgs), true, true)]
+[EventHandler("onslselect", typeof(SelectEventArgs), true, true)]
 
 public static class EventHandlers;
