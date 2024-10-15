@@ -117,7 +117,7 @@ export function beforeStart() {
     const stylesheet = document.createElement('link');
 
     stylesheet.rel = "stylesheet";
-    stylesheet.href = "_content/Shoelace.Style/index.css"
+    stylesheet.href = "_content/Shoelace.Style/Shoelace.Style.styles.css"
 
     document.head.appendChild(stylesheet);
 }
