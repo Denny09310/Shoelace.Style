@@ -11,7 +11,6 @@ public class SelectEventArgs : EventArgs
     /// <summary>
     /// Gets the selected value from the event.
     /// </summary>
-    /// <remarks>
     public string Value { get; set; } = default!;
 
     /// <summary>
