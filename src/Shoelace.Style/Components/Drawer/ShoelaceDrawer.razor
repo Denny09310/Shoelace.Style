@@ -2,6 +2,7 @@
 @inherits ShoelacePresentableBase
 
 <sl-drawer @ref="Element"
+           @attributes="AdditionalAttributes"
            class="@Class"
            id="@Id"
            style="@Style"
@@ -9,7 +10,7 @@
            contained="@Contained"
            label="@Label"
            no-header="@NoHeader"
-           placement="@Placement" 
+           placement="@Placement"
            @onslshow="ShowHandlerAsync"
            @onslaftershow="AfterShowHandlerAsync"
            @onslhide="HideHandlerAsync"
