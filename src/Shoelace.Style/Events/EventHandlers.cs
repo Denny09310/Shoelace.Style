@@ -8,7 +8,6 @@ namespace Shoelace.Style.Events;
 /// </summary>
 
 [EventHandler("onslcheckedchange", typeof(CheckboxChangeEventArgs), true, true)]
-[EventHandler("onplaychange", typeof(PlayChangeEventArgs), true, true)]
 [EventHandler("onslchange", typeof(ChangeEventArgs), true, true)]
 [EventHandler("onslinput", typeof(ChangeEventArgs), true, true)]
 [EventHandler("onslfocus", typeof(FocusEventArgs), true, true)]
@@ -27,5 +26,6 @@ namespace Shoelace.Style.Events;
 [EventHandler("onslinitialfocus", typeof(EventArgs), true, true)]
 [EventHandler("onslrequestclose", typeof(RequestCloseEventArgs), true, true)]
 [EventHandler("onslresize", typeof(ResizeEventArgs), true, true)]
+[EventHandler("onslselect", typeof(SelectEventArgs), true, true)]
 
 public static class EventHandlers;

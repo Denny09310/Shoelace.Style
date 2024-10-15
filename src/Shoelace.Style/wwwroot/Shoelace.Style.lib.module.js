@@ -51,13 +51,6 @@ const events = [
         })
     },
     {
-        name: 'slplaychange',
-        browserEventName: 'click',
-        createEventArgs: ({ target }) => ({
-            Play: target.play
-        })
-    },
-    {
         name: 'slhover',
         browserEventName: 'sl-hover',
         createEventArgs: ({ detail }) => ({
@@ -70,6 +63,14 @@ const events = [
         browserEventName: 'sl-focus',
         createEventArgs: ({ type }) => ({
             Type: type
+        })
+    },
+    {
+        name: 'slselect',
+        browserEventName: 'sl-select',
+        createEventArgs: ({ detail }) => ({
+            Value: detail.item.value,
+            Checked: detail.item.checked
         })
     },
     {

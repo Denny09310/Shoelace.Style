@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - 2024-10-15
+
+### 🚀 Features
+
+- Add sl-progress-bar
+- Sl-progress-ring
+- Added sl-menu
+- Added sl-menu-item
+- Added sl-menu-label
+
+### 🐛 Bug Fixes
+
+- Revert sl-animated-image play state detection
+- Missing @attributes parameter on sl-drawer
+- Xml documentation typo
+
+### ⚙️ Miscellaneous Tasks
+
+- Removed unusued documentation
+
 ## [1.4.0] - 2024-10-15
 
 ### 🚀 Features
@@ -12,6 +32,10 @@ All notable changes to this project will be documented in this file.
 ### 🐛 Bug Fixes
 
 - Missing event handlers registration
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump version, updated CHANGELOG.md, updated README.md
 
 ## [1.3.1] - 2024-10-15
 

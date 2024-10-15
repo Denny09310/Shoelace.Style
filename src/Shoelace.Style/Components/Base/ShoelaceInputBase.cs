@@ -457,7 +457,6 @@ public abstract partial class ShoelaceInputBase<TValue>
     /// <summary>
     /// Handler for the OnChange event.
     /// </summary>
-    /// <param name="e"></param>
     /// <returns></returns>
     protected virtual async Task ChangeHandlerAsync(ChangeEventArgs e)
     {
@@ -490,7 +489,6 @@ public abstract partial class ShoelaceInputBase<TValue>
     /// <summary>
     /// Handler for the OnInput event, with an optional delay to avoid to raise the <see cref="ValueChanged"/> event too often.
     /// </summary>
-    /// <param name="e"></param>
     /// <returns></returns>
     protected virtual async Task InputHandlerAsync(ChangeEventArgs e)
     {
