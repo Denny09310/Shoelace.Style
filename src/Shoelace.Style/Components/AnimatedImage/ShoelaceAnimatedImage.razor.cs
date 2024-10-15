@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using Shoelace.Style.Events;
 
 namespace Shoelace.Style.Components;
@@ -67,9 +68,11 @@ public partial class ShoelaceAnimatedImage : ShoelaceComponentBase
     /// <returns></returns>
     protected virtual async Task LoadHandlerAsync() => await OnLoad.InvokeAsync();
 
-    private async Task PlayChangeHandlerAsync(PlayChangeEventArgs e)
+    private async Task PlayChangeHandlerAsync()
     {
-        Play = e.Play;
+        // TODO: Find out why the custom handler doesent work "@onplaychange"
+
+        Play = await Element.GetPropertyAsync<bool>("play");
         await PlayChanged.InvokeAsync(Play);
     }
 }

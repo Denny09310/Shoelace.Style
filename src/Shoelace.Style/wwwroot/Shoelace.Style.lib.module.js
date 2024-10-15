@@ -51,13 +51,6 @@ const events = [
         })
     },
     {
-        name: 'slplaychange',
-        browserEventName: 'click',
-        createEventArgs: ({ target }) => ({
-            Play: target.play
-        })
-    },
-    {
         name: 'slhover',
         browserEventName: 'sl-hover',
         createEventArgs: ({ detail }) => ({

@@ -8,7 +8,6 @@ namespace Shoelace.Style.Events;
 /// </summary>
 
 [EventHandler("onslcheckedchange", typeof(CheckboxChangeEventArgs), true, true)]
-[EventHandler("onplaychange", typeof(PlayChangeEventArgs), true, true)]
 [EventHandler("onslchange", typeof(ChangeEventArgs), true, true)]
 [EventHandler("onslinput", typeof(ChangeEventArgs), true, true)]
 [EventHandler("onslfocus", typeof(FocusEventArgs), true, true)]
