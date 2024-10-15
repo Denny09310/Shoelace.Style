@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Shoelace.Style.Options;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Numerics;
 
 namespace Shoelace.Style.Components;
 
@@ -10,7 +13,8 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/range"/>
 /// </remarks>
-public partial class ShoelaceRange : ShoelaceInputBase<double>, IFocusable
+public partial class ShoelaceRange<TValue> : ShoelaceInputBase<TValue>, IFocusable
+    where TValue : INumber<TValue>
 {
     /// <summary>
     /// The range’s label.
@@ -49,6 +53,14 @@ public partial class ShoelaceRange : ShoelaceInputBase<double>, IFocusable
 
     #endregion Properties
 
+    private string? FormattedValue => Value switch
+    {
+        double @double => @double.ToString(CultureInfo.InvariantCulture),
+        decimal @decimal => @decimal.ToString(CultureInfo.InvariantCulture),
+        float @float => @float.ToString(CultureInfo.InvariantCulture),
+        _ => Value?.ToString()
+    };
+
     #region Events
 
     /// <inheritdoc/>
@@ -58,6 +70,31 @@ public partial class ShoelaceRange : ShoelaceInputBase<double>, IFocusable
     public EventCallback OnFocus { get; set; }
 
     #endregion Events
+
+    /// <summary>
+    /// Handler for the OnBluer event.
+    /// </summary>
+    protected virtual async Task BlurHandlerAsync() => await OnBlur.InvokeAsync();
+
+    /// <summary>
+    /// Handler for the OnFocus event.
+    /// </summary>
+    protected virtual async Task FocusHandlerAsync() => await OnFocus.InvokeAsync();
+
+    /// <inheritdoc/>
+    protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        if (BindConverter.TryConvertTo(value, CultureInfo.InvariantCulture, out result))
+        {
+            validationErrorMessage = null;
+            return true;
+        }
+        else
+        {
+            validationErrorMessage = string.Format(CultureInfo.InvariantCulture, "The {0} field must be a number.", DisplayName ?? (FieldBound ? FieldIdentifier.FieldName : "(unknown)"));
+            return false;
+        }
+    }
 
     #region Instance Properties
 

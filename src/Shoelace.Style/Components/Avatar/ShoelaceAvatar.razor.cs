@@ -67,14 +67,9 @@ public partial class ShoelaceAvatar : ShoelaceComponentBase
 
     #endregion Events
 
-    /// <inheritdoc />
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await base.OnAfterRenderAsync(firstRender);
-
-        if (firstRender)
-        {
-            await AddEventListener("sl-error", OnError);
-        }
-    }
+    /// <summary>
+    /// Handler for the OnError event
+    /// </summary>
+    /// <returns></returns>
+    protected virtual async Task ErrorHandlerAsync() => await OnError.InvokeAsync();
 }

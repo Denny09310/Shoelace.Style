@@ -19,21 +19,40 @@ This repository contains Blazor components built on top of the [Shoelace](https:
    dotnet add package Shoelace.Style --version 1.0.0.4
    ```
 
-2. Add the links to reference the css and js in index.html/App.razor/_Host.cshtml:
+2. Download the latest version of the <code>@shoelace-style</code> package. We suggest using libman with this configuration:
+
+   ```json
+   {
+     "version": "1.0",
+     "defaultProvider": "jsdelivr",
+     "libraries": [
+       {
+         "library": "@shoelace-style/shoelace@2.17.1",
+         "destination": "wwwroot/shoelace/",
+         "files": [
+           "cdn/!(react)/**/*.{js,svg,css}",
+           "cdn/*.js"
+         ]
+       }
+     ]
+   }
+   ```
+
+3. Add the links to reference the css and js in index.html/App.razor/_Host.cshtml:
 
    ```html
     <link rel="stylesheet"
           media="(prefers-color-scheme:light)"
-          href="_content/Shoelace.Style/themes/light.css" />
+          href="shoelace/cdn/themes/light.min.css" />
    
     <link rel="stylesheet"
           media="(prefers-color-scheme:dark)"
-          href="_content/Shoelace.Style/themes/dark.css"
+          href="shoelace/cdn/themes/dark.min.css"
           onload="document.documentElement.classList.add('sl-theme-dark');" />
    ```
 
    ``` html
-    <script src="_content/Shoelace.Style/shoelace-autoloader.js" type="module"></script>
+    <script src="shoelace/cdn/themes/shoelace-autoloader.min.js" type="module" data-shoelace="/shoelace/cdn"></script>
    ```
 
    Or follow the instructions in the [Installation](https://shoelace.style/getting-started/installation) page of the main site.
@@ -44,8 +63,7 @@ Import the main namespaces inside the _Import.razor file:
 
 ``` cshtml
 @using Shoelace.Style.Components
-@using Shoelace.Style.Services @* Optional *@
-@using Shoelace.Style.Options @* Optional *@
+@using Shoelace.Style.Services
 ```
 
 Add the service collection extension in you Program.cs:
@@ -79,8 +97,8 @@ builder.Services.AddShoelaceStyle();
 - [X] Format Bytes (`<sl-format-bytes>`)
 - [X] Format Date (`<sl-format-date>`)
 - [X] Format Number (`<sl-format-number>`)
-- [ ] Icon (`<sl-icon>`)
-- [ ] Icon Button (`<sl-icon-button>`)
+- [X] Icon (`<sl-icon>`)
+- [X] Icon Button (`<sl-icon-button>`)
 - [ ] Image Comparer (`<sl-image-comparer>`)
 - [ ] Include (`<sl-include>`)
 - [X] Input (`<sl-input>`)
@@ -88,29 +106,29 @@ builder.Services.AddShoelaceStyle();
 - [ ] Menu Item (`<sl-menu-item>`)
 - [ ] Menu Label (`<sl-menu-label>`)
 - [ ] Mutation Observer (`<sl-mutation-observer>`)
-- [ ] Option (`<sl-option>`)
+- [X] Option (`<sl-option>`)
 - [ ] Popup (`<sl-popup>`)
 - [ ] Progress Bar (`<sl-progress-bar>`)
 - [ ] Progress Ring (`<sl-progress-ring>`)
 - [ ] QR Code (`<sl-qr-code>`)
-- [ ] Radio (`<sl-radio>`)
-- [ ] Radio Button (`<sl-radio-button>`)
-- [ ] Radio Group (`<sl-radio-group>`)
-- [ ] Range (`<sl-range>`)
-- [ ] Rating (`<sl-rating>`)
-- [ ] Relative Time (`<sl-relative-time>`)
-- [ ] Resize Observer (`<sl-resize-observer>`)
-- [ ] Select (`<sl-select>`)
+- [X] Radio (`<sl-radio>`)
+- [X] Radio Button (`<sl-radio-button>`)
+- [X] Radio Group (`<sl-radio-group>`)
+- [X] Range (`<sl-range>`)
+- [X] Rating (`<sl-rating>`)
+- [X] Relative Time (`<sl-relative-time>`)
+- [X] Resize Observer (`<sl-resize-observer>`)
+- [X] Select (`<sl-select>`)
 - [ ] Skeleton (`<sl-skeleton>`)
 - [X] Spinner (`<sl-spinner>`)
 - [ ] Split Panel (`<sl-split-panel>`)
-- [ ] Switch (`<sl-switch>`)
+- [X] Switch (`<sl-switch>`)
 - [ ] Tab (`<sl-tab>`)
 - [ ] Tab Group (`<sl-tab-group>`)
 - [ ] Tab Panel (`<sl-tab-panel>`)
 - [ ] Tag (`<sl-tag>`)
-- [ ] Textarea (`<sl-textarea>`)
-- [ ] Tooltip (`<sl-tooltip>`)
+- [X] Textarea (`<sl-textarea>`)
+- [X] Tooltip (`<sl-tooltip>`)
 - [ ] Tree (`<sl-tree>`)
 - [ ] Tree Item (`<sl-tree-item>`)
 - [ ] Visually Hidden (`<sl-visually-hidden>`)

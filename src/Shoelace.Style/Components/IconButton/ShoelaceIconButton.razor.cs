@@ -83,17 +83,15 @@ public partial class ShoelaceIconButton : ShoelaceComponentBase, IFocusable
 
     #endregion Events
 
-    /// <inheritdoc />
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await base.OnAfterRenderAsync(firstRender);
+    /// <summary>
+    /// Handler for the OnBlur event.
+    /// </summary>
+    protected virtual async Task BlurHandlerAsync() => await OnBlur.InvokeAsync();
 
-        if (firstRender)
-        {
-            await AddEventListener("sl-blur", OnBlur);
-            await AddEventListener("sl-focus", OnFocus);
-        }
-    }
+    /// <summary>
+    /// Handler for the OnFocus event.
+    /// </summary>
+    protected virtual async Task FocusHandlerAsync() => await OnFocus.InvokeAsync();
 
     #region Instance Methods
 

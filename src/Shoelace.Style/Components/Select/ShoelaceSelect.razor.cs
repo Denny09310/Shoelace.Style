@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using Shoelace.Style.Extensions;
 using Shoelace.Style.Options;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Shoelace.Style.Components;
 
@@ -10,8 +12,8 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/select"/>
 /// </remarks>
-/// <typeparam name="T">The type of the <see cref="ShoelaceSelect{T}"/> value</typeparam>
-public partial class ShoelaceSelect<T> : ShoelaceInputBase<T>, IClearable, IPresentable, IFocusable
+/// <typeparam name="TValue">The type of the <see cref="ShoelaceSelect{T}"/> value</typeparam>
+public partial class ShoelaceSelect<TValue> : ShoelaceInputBase<TValue>, IClearable, IPresentable, IFocusable
 {
     /// <summary>
     /// The select main content.
@@ -36,16 +38,16 @@ public partial class ShoelaceSelect<T> : ShoelaceInputBase<T>, IClearable, IPres
     public bool Filled { get; set; }
 
     /// <summary>
-    /// Enable this option to prevent the listbox from being clipped 
-    /// when the component is placed inside a container with overflow: auto|scroll. 
+    /// Enable this option to prevent the listbox from being clipped
+    /// when the component is placed inside a container with overflow: auto|scroll.
     /// Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios.
     /// </summary>
     [Parameter]
     public bool Hoist { get; set; }
 
     /// <summary>
-    /// The maximum number of selected options to show when multiple is true. After the maximum, 
-    /// ”+n” will be shown to indicate the number of additional items that are selected. 
+    /// The maximum number of selected options to show when multiple is true. After the maximum,
+    /// ”+n” will be shown to indicate the number of additional items that are selected.
     /// Set to 0 to remove the limit.
     /// </summary>
     [Parameter]
@@ -74,7 +76,7 @@ public partial class ShoelaceSelect<T> : ShoelaceInputBase<T>, IClearable, IPres
     public string? Placeholder { get; set; }
 
     /// <summary>
-    /// The preferred placement of the select’s menu. 
+    /// The preferred placement of the select’s menu.
     /// Note that the actual placement may vary as needed to keep the listbox inside of the viewport.
     /// </summary>
     [Parameter]
@@ -114,25 +116,56 @@ public partial class ShoelaceSelect<T> : ShoelaceInputBase<T>, IClearable, IPres
 
     #endregion Events
 
-    /// <inheritdoc />
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    /// <summary>
+    /// Handler for the OnAfterHide event.
+    /// </summary>
+    protected virtual async Task AfterHideHandlerAsync()
     {
-        await base.OnAfterRenderAsync(firstRender);
+        Open = false;
+        await OpenChanged.InvokeAsync(Open);
 
-        if (firstRender)
-        {
-            await AddEventListener("sl-blur", OnBlur);
-            await AddEventListener("sl-clear", OnClear);
-
-            await AddEventListener("sl-show", OnShow);
-            await AddEventListener("sl-hide", OnHide);
-            await AddEventListener("sl-after-show", OnAfterShow);
-            await AddEventListener("sl-after-hide", OnAfterHide);
-
-            await AddEventListener("sl-after-show", OpenChanged, converter: () => Open = true);
-            await AddEventListener("sl-after-hide", OpenChanged, converter: () => Open = false);
-        }
+        await OnAfterHide.InvokeAsync();
     }
+
+    /// <summary>
+    /// Handler for the OnAfterShow event.
+    /// </summary>
+    protected virtual async Task AfterShowHandlerAsync()
+    {
+        Open = true;
+        await OpenChanged.InvokeAsync(Open);
+
+        await OnAfterShow.InvokeAsync();
+    }
+
+    /// <summary>
+    /// Handler for the OnBlur event.
+    /// </summary>
+    protected virtual async Task BlurHandlerAsync() => await OnBlur.InvokeAsync();
+
+    /// <summary>
+    /// Handler for the OnClrar event.
+    /// </summary>
+    protected virtual async Task ClearHandlerAsync() => await OnClear.InvokeAsync();
+
+    /// <summary>
+    /// Handler for the OnFocus event.
+    /// </summary>
+    protected virtual async Task FocusHandlerAsync() => await OnFocus.InvokeAsync();
+
+    /// <summary>
+    /// Handler for the OnHide event.
+    /// </summary>
+    protected virtual async Task HideHandlerAsync() => await OnHide.InvokeAsync();
+
+    /// <summary>
+    /// Handler for the OnShow event.
+    /// </summary>
+    protected virtual async Task ShowHandlerAsync() => await OnShow.InvokeAsync();
+
+    ///<inheritdoc/>
+    protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)
+        => this.TryParseSelectableValueFromString(value, out result, out validationErrorMessage);
 
     #region Instance Methods
 

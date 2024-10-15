@@ -2,6 +2,8 @@
 using Microsoft.JSInterop;
 using Shoelace.Style.Events;
 using Shoelace.Style.Options;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 
 namespace Shoelace.Style.Components;
 
@@ -11,7 +13,8 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/rating"/>
 /// </remarks>
-public partial class ShoelaceRating : ShoelaceInputBase<double>, IFocusable
+public partial class ShoelaceRating<TValue> : ShoelaceInputBase<TValue>, IFocusable
+    where TValue : System.Numerics.INumber<TValue>
 {
     #region Properties
 
@@ -36,6 +39,14 @@ public partial class ShoelaceRating : ShoelaceInputBase<double>, IFocusable
 
     #endregion Properties
 
+    private string? FormattedValue => Value switch
+    {
+        double @double => @double.ToString(CultureInfo.InvariantCulture),
+        decimal @decimal => @decimal.ToString(CultureInfo.InvariantCulture),
+        float @float => @float.ToString(CultureInfo.InvariantCulture),
+        _ => Value?.ToString()
+    };
+
     #region Events
 
     /// <inheritdoc/>
@@ -45,23 +56,42 @@ public partial class ShoelaceRating : ShoelaceInputBase<double>, IFocusable
     public EventCallback OnFocus { get; set; }
 
     /// <summary>
-    /// Emitted when the user hovers over a value. 
-    /// The phase property indicates when hovering starts, moves to a new value, or ends. 
+    /// Emitted when the user hovers over a value.
+    /// The phase property indicates when hovering starts, moves to a new value, or ends.
     /// The value property tells what the rating’s value would be if the user were to commit to the hovered value.
     /// </summary>
     [Parameter]
-    public EventCallback<ShoelaceHoverEvent> OnHover { get; set; }
+    public EventCallback<HoverEventArgs> OnHover { get; set; }
 
     #endregion Events
 
-    /// <inheritdoc/>
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await base.OnAfterRenderAsync(firstRender);
+    /// <summary>
+    /// Handler for the OnBlur event.
+    /// </summary>
+    protected virtual async Task BlurHandlerAsync() => await OnBlur.InvokeAsync();
 
-        if (firstRender)
+    /// <summary>
+    /// Handler for the OnFocus event.
+    /// </summary>
+    protected virtual async Task FocusHandlerAsync() => await OnFocus.InvokeAsync();
+
+    /// <summary>
+    /// Handler for the OnHover event.
+    /// </summary>
+    protected virtual async Task HoverHandlerAsync(HoverEventArgs e) => await OnHover.InvokeAsync(e);
+
+    /// <inheritdoc/>
+    protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        if (BindConverter.TryConvertTo(value, CultureInfo.InvariantCulture, out result))
         {
-            await AddEventListener("sl-hover", OnHover);
+            validationErrorMessage = null;
+            return true;
+        }
+        else
+        {
+            validationErrorMessage = string.Format(CultureInfo.InvariantCulture, "The {0} field must be a number.", DisplayName ?? (FieldBound ? FieldIdentifier.FieldName : "(unknown)"));
+            return false;
         }
     }
 

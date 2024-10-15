@@ -56,6 +56,16 @@ public partial class ShoelaceRadio<T> : ShoelaceComponentBase, IFocusable
 
     #endregion Events
 
+    /// <summary>
+    /// Handler for the OnBluer event.
+    /// </summary>
+    protected virtual async Task BlurHandlerAsync() => await OnBlur.InvokeAsync();
+
+    /// <summary>
+    /// Handler for the OnFocus event.
+    /// </summary>
+    protected virtual async Task FocusHandlerAsync() => await OnFocus.InvokeAsync();
+
     #region Instance Properties
 
     /// <inheritdoc/>

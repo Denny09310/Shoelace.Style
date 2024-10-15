@@ -1,9 +1,5 @@
-:root {
-    font-family: var(--sl-font-sans);
-}
-
-:not(:defined) {
-    visibility: hidden;
+h1:focus {
+    outline: none;
 }
 
 #blazor-error-ui {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Shoelace.Style.Options;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Shoelace.Style.Components;
 
@@ -10,7 +11,7 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/color-picker"/>
 /// </remarks>
-public partial class ShoelaceColorPicker : ShoelaceInputBase<string>, IFocusable
+public partial class ShoelaceColorPicker : ShoelaceInputBase<string?>, IFocusable
 {
     #region Properties
 
@@ -77,6 +78,16 @@ public partial class ShoelaceColorPicker : ShoelaceInputBase<string>, IFocusable
 
     #endregion Events
 
+    /// <summary>
+    /// Handler for the OnBluer event.
+    /// </summary>
+    protected virtual async Task BlurHandlerAsync() => await OnBlur.InvokeAsync();
+
+    /// <summary>
+    /// Handler for the OnFocus event.
+    /// </summary>
+    protected virtual async Task FocusHandlerAsync() => await OnFocus.InvokeAsync();
+
     /// <inheritdoc />
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -86,6 +97,14 @@ public partial class ShoelaceColorPicker : ShoelaceInputBase<string>, IFocusable
         {
             await Element.SetPropertyAsync("swatches", string.Join(';', Swatches));
         }
+    }
+
+    /// <inheritdoc/>
+    protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        result = value;
+        validationErrorMessage = null;
+        return true;
     }
 
     #region Instance Methods

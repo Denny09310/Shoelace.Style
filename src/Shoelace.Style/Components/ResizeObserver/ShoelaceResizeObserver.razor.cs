@@ -33,18 +33,13 @@ public partial class ShoelaceResizeObserver
     /// Emitted when the element is resized.
     /// </summary>
     [Parameter]
-    public EventCallback<ShoelaceResizeEvent> OnResize { get; set; }
+    public EventCallback<ResizeEventArgs> OnResize { get; set; }
 
     #endregion Events
 
-    /// <inheritdoc/>
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await base.OnAfterRenderAsync(firstRender);
-
-        if (firstRender)
-        {
-            await AddEventListener("sl-resize", OnResize);
-        }
-    }
+    /// <summary>
+    /// Handler for the OnResize event
+    /// </summary>
+    /// <returns></returns>
+    protected virtual async Task ResizeHandlerAsync(ResizeEventArgs e) => await OnResize.InvokeAsync(e);
 }

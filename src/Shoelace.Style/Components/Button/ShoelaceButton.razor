@@ -24,6 +24,8 @@
            formaction="@FormAction"
            formmethod="@FormMethod"
            formnovalidate="@FormNoValidate"
-           formtarget="@FormTarget">
+           formtarget="@FormTarget"
+           @onslblur="BlurHandlerAsync"
+           @onslfocus="FocusHandlerAsync">
     @ChildContent
 </sl-button>

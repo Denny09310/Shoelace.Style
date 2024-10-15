@@ -67,7 +67,7 @@ public interface IToastService
 /// </summary>
 public class ToastService(IJSRuntime js) : IToastService, IAsyncDisposable
 {
-    private const string ScriptPath = "./_content/Shoelace.Style/scripts/shoelace-alert-interop.js";
+    private const string ScriptPath = "./_content/Shoelace.Style/index.js";
 
     private IJSObjectReference? module;
 

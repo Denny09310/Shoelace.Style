@@ -1,5 +1,5 @@
 @namespace Shoelace.Style.Components
-@inherits ShoelaceInputBase<string>
+@inherits ShoelaceInputBase<bool>
 
 <sl-checkbox @ref="Element"
              @attributes="AdditionalAttributes"
@@ -16,6 +16,7 @@
              value="@Value"
              checked="@Checked"
              default-checked="@DefaultChecked"
-             indeterminate="@Indeterminate">
+             indeterminate="@Indeterminate"
+             @onslcheckedchange="CheckedChangeHandlerAsync">
     @Label
 </sl-checkbox>

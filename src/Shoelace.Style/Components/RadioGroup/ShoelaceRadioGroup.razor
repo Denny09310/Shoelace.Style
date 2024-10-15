@@ -1,6 +1,6 @@
 @namespace Shoelace.Style.Components
-@inherits ShoelaceInputBase<T>
-@typeparam T
+@inherits ShoelaceInputBase<TValue>
+@typeparam TValue
 
 <sl-radio-group @ref="Element"
                 @attributes="AdditionalAttributes"
@@ -13,6 +13,8 @@
                 name="@Name"
                 required="@Required"
                 size="@Size"
-                value="@Value">
+                value="@Value"
+                @onslchange="ChangeHandlerAsync"
+                @onslinvalid="InvalidHandlerAsync">
     @ChildContent
 </sl-radio-group>

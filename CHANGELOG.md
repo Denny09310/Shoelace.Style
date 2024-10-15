@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.1] - 2024-10-15
+
+### 🚜 Refactor
+
+- Removed shoelace cdn from inside the nuget package
+- Removed most of the Blazor.Javascript.Interop.Extensions method in favor of the native EventHandlers
+
 ## [1.3.0] - 2024-10-10
 
 ### 🚀 Features
@@ -18,6 +25,7 @@ All notable changes to this project will be documented in this file.
 ### ⚙️ Miscellaneous Tasks
 
 - Format code style
+- Versioning 1.0.3
 
 ## [1.2.0] - 2024-10-07
 

@@ -10,8 +10,7 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/input"/>
 /// </remarks>
-/// <typeparam name="T">The type of the value attribute</typeparam>
-public partial class ShoelaceInput<T> : ShoelaceInputBase<T>, ISelectable, IClearable
+public partial class ShoelaceInput : ShoelaceInputBase<string?>, ISelectable, IClearable
 {
     /// <summary>
     /// The content of the input.
@@ -184,15 +183,17 @@ public partial class ShoelaceInput<T> : ShoelaceInputBase<T>, ISelectable, IClea
 
     #endregion Events
 
-    /// <inheritdoc />
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await base.OnAfterRenderAsync(firstRender);
+    /// <summary>
+    /// Handler for the OnClear event.
+    /// </summary>
+    protected virtual async Task ClearHandlerAsync() => await OnClear.InvokeAsync();
 
-        if (firstRender)
-        {
-            await AddEventListener("sl-clear", OnClear);
-        }
+    /// <inheritdoc/>
+    protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        result = value;
+        validationErrorMessage = null;
+        return true;
     }
 
     #region Instance Methods

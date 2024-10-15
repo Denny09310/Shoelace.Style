@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Shoelace.Style.Events;
+using Shoelace.Style.Utilities;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Shoelace.Style.Components;
 
@@ -9,8 +11,15 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/card"/>
 /// </remarks>
-public partial class ShoelaceCheckbox : ShoelaceInputBase<string>
+public partial class ShoelaceCheckbox : ShoelaceInputBase<bool>
 {
+    /// <inheritdoc/>
+    [DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(CheckboxChangeEventArgs))]
+    public ShoelaceCheckbox()
+    {
+        Id = Identifier.NewId();
+    }
+
     /// <summary>
     /// Emitted when the attribute checked change.
     /// </summary>
@@ -41,14 +50,15 @@ public partial class ShoelaceCheckbox : ShoelaceInputBase<string>
 
     #endregion Properties
 
-    /// <inheritdoc />
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    /// <summary>
+    /// Handler for the <see cref="CheckedChanged"/> event.
+    /// </summary>
+    protected virtual async Task CheckedChangeHandlerAsync(CheckboxChangeEventArgs e)
     {
-        await base.OnAfterRenderAsync(firstRender);
-
-        if (firstRender)
-        {
-            await AddEventListener<ShoelaceChangeEventArgs<string>, bool>("sl-change", CheckedChanged, (e) => e.Target.Checked);
-        }
+        Checked = e.Checked ?? false;
+        await CheckedChanged.InvokeAsync(Checked);
     }
+
+    /// <inheritdoc/>
+    protected override bool TryParseValueFromString(string? value, out bool result, [NotNullWhen(false)] out string? validationErrorMessage) => throw new NotSupportedException($"This component does not parse string inputs. Bind to the '{nameof(CurrentValue)}' property, not '{nameof(CurrentValueAsString)}'.");
 }
