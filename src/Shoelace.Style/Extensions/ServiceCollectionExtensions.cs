@@ -14,5 +14,9 @@ public static class ServiceCollectionExtensions
     /// <param name="services">The service collection to add the services to.</param>
     /// <returns>The updated service collection.</returns>
     public static IServiceCollection AddShoelaceStyle(this IServiceCollection services)
-        => services.AddToastService().AddDialogService();
+    {
+        return services.AddToastService()
+            .AddDialogService()
+            .AddDrawerService();
+    }
 }

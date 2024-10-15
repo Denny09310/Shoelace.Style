@@ -1,0 +1,19 @@
+@namespace Shoelace.Style.Components
+@inject NavigationManager NavigationManager
+@inject IDrawerService DrawerService
+
+<ShoelaceDrawer @bind-Open="Open"
+                Label="@_options.Label"
+                Placement="@_options.Placement"
+                NoHeader="@_options.NoHeader">
+    @foreach (var action in _options.HeaderActions)
+    {
+        <ShoelaceIconButton @key="action"
+                            Name="@action.Icon"
+                            Class="@action.Class"
+                            Style="@action.Style"
+                            slot="header-actions" />
+    }
+
+    @_options.RenderFragment
+</ShoelaceDrawer>
