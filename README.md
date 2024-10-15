@@ -92,7 +92,7 @@ builder.Services.AddShoelaceStyle();
 - [X] Details (`<sl-details>`)
 - [X] Dialog (`<sl-dialog>`)
 - [X] Divider (`<sl-divider>`)
-- [ ] Drawer (`<sl-drawer>`)
+- [X] Drawer (`<sl-drawer>`)
 - [X] Dropdown (`<sl-dropdown>`)
 - [X] Format Bytes (`<sl-format-bytes>`)
 - [X] Format Date (`<sl-format-date>`)

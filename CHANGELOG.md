@@ -2,12 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2024-10-15
+
+### 🚀 Features
+
+- Added sl-drawer
+- Added ShoelaceDrawerProvider for global drawer injection
+
+### 🐛 Bug Fixes
+
+- Missing event handlers registration
+
 ## [1.3.1] - 2024-10-15
 
 ### 🚜 Refactor
 
 - Removed shoelace cdn from inside the nuget package
 - Removed most of the Blazor.Javascript.Interop.Extensions method in favor of the native EventHandlers
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump version, updated CHANGELOG.md, updated README.md
 
 ## [1.3.0] - 2024-10-10
 

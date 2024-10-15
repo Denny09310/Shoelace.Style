@@ -1,0 +1,20 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelacePresentableBase
+
+<sl-drawer @ref="Element"
+           class="@Class"
+           id="@Id"
+           style="@Style"
+           open="@Open"
+           contained="@Contained"
+           label="@Label"
+           no-header="@NoHeader"
+           placement="@Placement" 
+           @onslshow="ShowHandlerAsync"
+           @onslaftershow="AfterShowHandlerAsync"
+           @onslhide="HideHandlerAsync"
+           @onslafterhide="AfterHideHandlerAsync"
+           @onslinitialfocus="InitialFocusHandlerAsync"
+           @onslrequestclose="RequestCloseHandlerAsync">
+    @ChildContent
+</sl-drawer>

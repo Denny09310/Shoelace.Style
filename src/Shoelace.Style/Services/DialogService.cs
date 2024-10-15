@@ -410,33 +410,7 @@ public class DialogService : IDialogService
             return dialogReference;
         }
     }
-
-    private sealed class DialogHelperComponent : IComponent
-    {
-        private const string ChildContent = nameof(ChildContent);
-        private RenderFragment? _renderFragment;
-        private RenderHandle _renderHandle;
-
-        public static RenderFragment Wrap(RenderFragment renderFragment) => new(builder =>
-        {
-            builder.OpenComponent<DialogHelperComponent>(1);
-            builder.AddAttribute(2, ChildContent, renderFragment);
-            builder.CloseComponent();
-        });
-
-        void IComponent.Attach(RenderHandle renderHandle) => _renderHandle = renderHandle;
-
-        Task IComponent.SetParametersAsync(ParameterView parameters)
-        {
-            if (_renderFragment is null && parameters.TryGetValue<RenderFragment>(ChildContent, out var renderFragment))
-            {
-                _renderFragment = renderFragment;
-                _renderHandle.Render(_renderFragment);
-            }
-
-            return Task.CompletedTask;
-        }
-    }
+    private sealed class DialogHelperComponent : BaseHelperComponent<DialogHelperComponent>;
 }
 
 /// <summary>
