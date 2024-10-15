@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Shoelace.Style.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Shoelace.Style.Components;
 
@@ -8,13 +10,19 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/radio-group"/>
 /// </remarks>
-/// <typeparam name="T">The type of the radio group value</typeparam>
-public partial class ShoelaceRadioGroup<T> : ShoelaceInputBase<T>
+/// <typeparam name="TValue">The type of the radio group value</typeparam>
+
+[CascadingTypeParameter(nameof(TValue))]
+public partial class ShoelaceRadioGroup<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] TValue> : ShoelaceInputBase<TValue>
 {
     /// <summary>
-    /// The default slot where <see cref="ShoelaceRadio{T}"/> 
+    /// The default slot where <see cref="ShoelaceRadio{T}"/>
     /// or <see cref="ShoelaceRadioButton{T}"/> elements are placed.
     /// </summary>
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+
+    /// <inheritdoc/>
+    protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)
+        => this.TryParseSelectableValueFromString(value, out result, out validationErrorMessage);
 }

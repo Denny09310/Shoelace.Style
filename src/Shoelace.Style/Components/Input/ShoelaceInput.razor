@@ -1,6 +1,5 @@
 @namespace Shoelace.Style.Components
-@inherits ShoelaceInputBase<T>
-@typeparam T
+@inherits ShoelaceInputBase<string?>
 
 <sl-input @ref="Element"
           @attributes="AdditionalAttributes"
@@ -23,9 +22,9 @@
           enterkeyhint="@EnterKeyHint"
           filled="@Filled"
           inputmode="@InputMode"
-          max="@Max"
+          max="@Max?.ToString(CultureInfo.InvariantCulture)"
           maxlength="@MaxLength"
-          min="@Min"
+          min="@Min?.ToString(CultureInfo.InvariantCulture)"
           minlength="@MinLength"
           no-spin-buttons="@NoSpinButtons"
           password-toggle="@PasswordToggle"
@@ -36,6 +35,10 @@
           readonly="@Readonly"
           spellcheck="@Spellcheck"
           step="@Step"
-          type="@Type">
+          type="@Type"
+          @onslchange="ChangeHandlerAsync"
+          @onslinput="InputHandlerAsync"
+          @onslinvalid="InvalidHandlerAsync"
+          @onslclear="ClearHandlerAsync">
     @ChildContent
 </sl-input>

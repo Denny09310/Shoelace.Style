@@ -13,6 +13,10 @@
             hoist="@Hoist"
             placement="@Placement"
             skidding="@Skidding"
-            trigger="@Trigger">
+            trigger="@Trigger"
+            @onslshow="ShowHandlerAsync"
+            @onslaftershow="AfterShowHandlerAsync"
+            @onslhide="HideHandlerAsync"
+            @onslafterhide="AfterHideHandlerAsync">
     @ChildContent
 </sl-tooltip>

@@ -1,6 +1,6 @@
 @namespace Shoelace.Style.Components
-@inherits ShoelaceInputBase<T>
-@typeparam T
+@inherits ShoelaceInputBase<TValue>
+@typeparam TValue
 
 <sl-select @ref="Element"
            @attributes="AdditionalAttributes"
@@ -24,6 +24,15 @@
            open="@Open"
            pill="@Pill"
            placeholder="@Placeholder"
-           placement="@Placement">
+           placement="@Placement"
+           @onslchange="ChangeHandlerAsync"
+           @onslinvalid="InvalidHandlerAsync"
+           @onslclear="ClearHandlerAsync"
+           @onslblur="BlurHandlerAsync"
+           @onslfocus="FocusHandlerAsync"
+           @onslshow="ShowHandlerAsync"
+           @onslaftershow="AfterShowHandlerAsync"
+           @onslhide="HideHandlerAsync"
+           @onslafterhide="AfterHideHandlerAsync">
     @ChildContent
 </sl-select>

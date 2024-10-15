@@ -1,5 +1,6 @@
 @namespace Shoelace.Style.Components
-@inherits ShoelaceInputBase<double>
+@inherits ShoelaceInputBase<TValue>
+@typeparam TValue
 
 <sl-range @ref="Element"
           @attributes="AdditionalAttributes"
@@ -7,15 +8,19 @@
           id="@Id"
           style="@Style"
           name="@Name"
-          value="@Value"
+          value="@FormattedValue"
           label="@Label"
           help-text="@HelpText"
           disabled="@Disabled"
-          min="@Min"
-          max="@Max"
-          step="@Step"
+          min="@Min?.ToString(CultureInfo.InvariantCulture)"
+          max="@Max?.ToString(CultureInfo.InvariantCulture)"
+          step="@Step?.ToString(CultureInfo.InvariantCulture)"
           tooltip="@Tooltip"
           form="@Form"
-          default-value="@DefaultValue">
+          default-value="@DefaultValue"
+          @onslchange="ChangeHandlerAsync"
+          @onslinvalid="InvalidHandlerAsync"
+          @onslblur="BlurHandlerAsync"
+          @onslfocus="FocusHandlerAsync">
     @ChildContent
 </sl-range>

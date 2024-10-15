@@ -8,7 +8,7 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/textarea"/>
 /// </remarks>
-public partial class ShoealceTextarea : ShoelaceInput<string>
+public partial class ShoealceTextarea : ShoelaceInput
 {
     #region Properties
 
@@ -25,7 +25,7 @@ public partial class ShoealceTextarea : ShoelaceInput<string>
     /// Posiible values are	'none' | 'vertical' | 'auto'
     /// </remarks>
     [Parameter]
-    public string Resize { get; set; }
+    public string? Resize { get; set; }
 
     #endregion
 }

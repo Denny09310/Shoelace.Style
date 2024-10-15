@@ -19,7 +19,7 @@ public interface IDialogReference
     /// <summary>
     /// The unique ID of this dialog.
     /// </summary>
-    Guid Id { get; }
+    string Id { get; }
 
     /// <summary>
     /// A task completion source that tracks the rendering completion state of the dialog.
@@ -79,7 +79,7 @@ public interface IDialogReference
 /// </summary>
 /// <param name="instanceId">The unique identifier for the dialog instance.</param>
 /// <param name="service">The dialog service managing this dialog instance.</param>
-public class DialogReference(Guid instanceId, IDialogService service) : IDialogReference
+public class DialogReference(string instanceId, IDialogService service) : IDialogReference
 {
     private readonly TaskCompletionSource<DialogResult?> _result = new();
     private readonly IDialogService _service = service;
@@ -88,7 +88,7 @@ public class DialogReference(Guid instanceId, IDialogService service) : IDialogR
     public object? Dialog { get; private set; }
 
     /// <inheritdoc />
-    public Guid Id { get; } = instanceId;
+    public string Id { get; } = instanceId;
 
     /// <inheritdoc />
     public TaskCompletionSource<bool> RenderCompleteTaskCompletionSource { get; } = new();

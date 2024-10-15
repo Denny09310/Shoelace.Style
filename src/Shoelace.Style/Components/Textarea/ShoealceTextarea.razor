@@ -1,5 +1,5 @@
 @namespace Shoelace.Style.Components
-@inherits ShoelaceInput<string>
+@inherits ShoelaceInput
 
 <sl-textarea @ref="Element"
              @attributes="AdditionalAttributes"
@@ -35,4 +35,8 @@
              step="@Step"
              type="@Type"
              rows="@Rows"
-             resize="@Resize"></sl-textarea>
+             resize="@Resize"
+             @onslchange="ChangeHandlerAsync"
+             @onslinput="InputHandlerAsync"
+             @onslinvalid="InvalidHandlerAsync"
+             @onslclear="ClearHandlerAsync"></sl-textarea>

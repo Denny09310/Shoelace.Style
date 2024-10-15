@@ -8,7 +8,13 @@
            style="@Style"
            open="@Open"
            label="@Label"
-           no-header="@NoHeader">
+           no-header="@NoHeader"
+           @onslshow="ShowHandlerAsync"
+           @onslaftershow="AfterShowHandlerAsync"
+           @onslhide="HideHandlerAsync"
+           @onslafterhide="AfterHideHandlerAsync"
+           @onslinitialfocus="InitialFocusHandlerAsync"
+           @onslrequestclose="RequestCloseHandlerAsync">
     <CascadingValue Value="this">
         @ChildContent
     </CascadingValue>

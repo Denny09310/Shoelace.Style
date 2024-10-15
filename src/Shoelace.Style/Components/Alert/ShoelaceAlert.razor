@@ -10,6 +10,10 @@
           countdown="@Countdown"
           duration="@Duration?.ToString(CultureInfo.InvariantCulture)"
           open="@Open"
-          variant="@Variant">
+          variant="@Variant"
+          @onslshow="ShowHandlerAsync"
+          @onslaftershow="AfterShowHandlerAsync"
+          @onslhide="HideHandlerAsync"
+          @onslafterhide="AfterHideHandlerAsync">
     @ChildContent
 </sl-alert>

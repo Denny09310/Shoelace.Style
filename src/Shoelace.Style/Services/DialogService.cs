@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
 using Shoelace.Style.Components;
+using Shoelace.Style.Utilities;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Shoelace.Style.Services;
@@ -244,7 +245,7 @@ public class DialogService : IDialogService
     /// <inheritdoc />
     public virtual IDialogReference CreateReference()
     {
-        return new DialogReference(Guid.NewGuid(), this);
+        return new DialogReference(Identifier.NewId(), this);
     }
 
     /// <inheritdoc />

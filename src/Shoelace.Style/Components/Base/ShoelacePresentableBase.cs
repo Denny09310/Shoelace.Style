@@ -42,22 +42,37 @@ public abstract class ShoelacePresentableBase : ShoelaceComponentBase, IPresenta
 
     #endregion Events
 
-    /// <inheritdoc />
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    /// <summary>
+    /// Handler for the OnAfterHide event.
+    /// </summary>
+    protected virtual async Task AfterHideHandlerAsync()
     {
-        await base.OnAfterRenderAsync(firstRender);
+        Open = false;
+        await OpenChanged.InvokeAsync(Open);
 
-        if (firstRender)
-        {
-            await AddEventListener("sl-show", OnShow);
-            await AddEventListener("sl-hide", OnHide);
-            await AddEventListener("sl-after-show", OnAfterShow);
-            await AddEventListener("sl-after-hide", OnAfterHide);
-
-            await AddEventListener("sl-after-show", OpenChanged, converter: () => Open = true);
-            await AddEventListener("sl-after-hide", OpenChanged, converter: () => Open = false);
-        }
+        await OnAfterHide.InvokeAsync();
     }
+
+    /// <summary>
+    /// Handler for the OnAfterShow event.
+    /// </summary>
+    protected virtual async Task AfterShowHandlerAsync()
+    {
+        Open = true;
+        await OpenChanged.InvokeAsync(Open);
+
+        await OnAfterShow.InvokeAsync();
+    }
+
+    /// <summary>
+    /// Handler for the OnHide event.
+    /// </summary>
+    protected virtual async Task HideHandlerAsync() => await OnHide.InvokeAsync();
+
+    /// <summary>
+    /// Handler for the OnShow event.
+    /// </summary>
+    protected virtual async Task ShowHandlerAsync() => await OnShow.InvokeAsync();
 
     #region Instance Methods
 

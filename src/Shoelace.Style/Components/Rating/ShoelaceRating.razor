@@ -1,14 +1,20 @@
 @namespace Shoelace.Style.Components
-@inherits ShoelaceInputBase<double>
+@inherits ShoelaceInputBase<TValue>
+@typeparam TValue
 
 <sl-rating @ref="Element"
            @attributes="AdditionalAttributes"
            class="@Class"
            id="@Id"
            style="@Style"
-           value="@Value"
+           value="@FormattedValue"
            disabled="@Disabled"
            label="@Label"
-           max="@Max?.ToString(CultureInfo.InvariantCulture))"
-           precision="@Precision?.ToString(CultureInfo.InvariantCulture))"
-           readonly="@Readonly"></sl-rating>
+           max="@Max?.ToString(CultureInfo.InvariantCulture)"
+           precision="@Precision?.ToString(CultureInfo.InvariantCulture)"
+           readonly="@Readonly"
+           @onslchange="ChangeHandlerAsync"
+           @onslinvalid="InvalidHandlerAsync"
+           @onslblur="BlurHandlerAsync"
+           @onslfocus="FocusHandlerAsync"
+           @onslhover="HoverHandlerAsync"></sl-rating>

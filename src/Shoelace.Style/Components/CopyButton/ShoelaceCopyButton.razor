@@ -14,6 +14,8 @@
                 hoist="@Hoist"
                 success-label="@SuccessLabel"
                 tooltip-placement="@TooltipPlacement"
-                valu="@Value">
+                valu="@Value"
+                @onslcopy="CopyHandlerAsync"
+                @onslerror="ErrorHandlerAsync">
     @ChildContent
 </sl-copy-button>
