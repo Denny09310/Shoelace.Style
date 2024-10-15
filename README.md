@@ -52,7 +52,7 @@ This repository contains Blazor components built on top of the [Shoelace](https:
    ```
 
    ``` html
-    <script src="shoelace/cdn/themes/shoelace-autoloader.min.js" type="module" data-shoelace="/shoelace/cdn"></script>
+    <script src="shoelace/cdn/shoelace-autoloader.min.js" type="module" data-shoelace="/shoelace/cdn"></script>
    ```
 
    Or follow the instructions in the [Installation](https://shoelace.style/getting-started/installation) page of the main site.
@@ -92,7 +92,7 @@ builder.Services.AddShoelaceStyle();
 - [X] Details (`<sl-details>`)
 - [X] Dialog (`<sl-dialog>`)
 - [X] Divider (`<sl-divider>`)
-- [ ] Drawer (`<sl-drawer>`)
+- [X] Drawer (`<sl-drawer>`)
 - [X] Dropdown (`<sl-dropdown>`)
 - [X] Format Bytes (`<sl-format-bytes>`)
 - [X] Format Date (`<sl-format-date>`)
