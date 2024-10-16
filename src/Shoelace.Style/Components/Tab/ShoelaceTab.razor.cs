@@ -52,12 +52,12 @@ public partial class ShoelaceTab : ShoelaceComponentBase
     /// Emitted when the tab is closable and the close button is activated.
     /// </summary>
     [Parameter]
-    public EventCallback<ShoelaceTab> OnClose { get; set; }
+    public EventCallback OnClose { get; set; }
 
     #endregion Events
 
     /// <summary>
     /// Handler for the OnClose event.
     /// </summary>
-    protected virtual Task CloseHandlerAsync() => OnClose.InvokeAsync(this);
+    protected virtual Task CloseHandlerAsync() => OnClose.InvokeAsync();
 }

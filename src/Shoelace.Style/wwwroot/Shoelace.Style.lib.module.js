@@ -48,6 +48,20 @@ const events = [
         browserEventName: 'sl-initial-focus',
     },
     {
+        name: 'sltabhide',
+        browserEventName: 'sl-tab-hide',
+        createEventArgs: ({ detail }) => ({
+            Name: detail.name
+        })
+    },
+    {
+        name: 'sltabshow',
+        browserEventName: 'sl-tab-show',
+        createEventArgs: ({ detail }) => ({
+            Name: detail.name
+        })
+    },
+    {
         name: 'slrequestclose',
         browserEventName: 'sl-request-close',
         createEventArgs: ({ detail }) => ({
