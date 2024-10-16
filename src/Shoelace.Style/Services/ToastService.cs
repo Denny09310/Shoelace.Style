@@ -69,7 +69,7 @@ public class ToastService(IJSRuntime js) : IToastService, IAsyncDisposable
 {
     private const string ScriptPath = "./_content/Shoelace.Style/scripts/shoelace-alert-interop.js";
 
-    private readonly Lazy<ValueTask<IJSObjectReference>> _module = new(() => js.InvokeAsync<IJSObjectReference>(ScriptPath));
+    private IJSObjectReference? _module;
 
     /// <summary>
     /// Disposes of the <see cref="ToastService"/> asynchronously, releasing JavaScript resources.
@@ -77,10 +77,9 @@ public class ToastService(IJSRuntime js) : IToastService, IAsyncDisposable
     /// <returns>A task that represents the asynchronous dispose operation.</returns>
     public async ValueTask DisposeAsync()
     {
-        if (_module.IsValueCreated)
+        if (_module != null)
         {
-            var module = await _module.Value;
-            await module.DisposeAsync();
+            await _module.DisposeAsync();
         }
     }
 
@@ -105,14 +104,14 @@ public class ToastService(IJSRuntime js) : IToastService, IAsyncDisposable
     /// <inheritdoc />
     public async Task ToastAsync(string message, string? variant = null, string? icon = null, double? duration = null)
     {
-        var module = await _module.Value;
+        var module = await ImportModuleAsync();
         await module.InvokeVoidAsync("toast", message, new ToastOptions { Variant = variant, Duration = duration, Icon = icon });
     }
 
     /// <inheritdoc />
     public async Task ToastAsync(string message, ToastOptions? options = null)
     {
-        var module = await _module.Value;
+        var module = await ImportModuleAsync();
         await module.InvokeVoidAsync("toast", message, options);
     }
 
@@ -121,6 +120,8 @@ public class ToastService(IJSRuntime js) : IToastService, IAsyncDisposable
     {
         await ToastAsync(message, new ToastOptions { Variant = "warning", Icon = "exclamation-triangle" });
     }
+
+    private async Task<IJSObjectReference> ImportModuleAsync() => _module ??= await js.InvokeAsync<IJSObjectReference>(ScriptPath);
 }
 
 /// <summary>

@@ -15,13 +15,8 @@ public partial class ShoelaceTabGroup : ShoelaceComponentBase
 {
     private const string ScriptModule = "./_content/Shoelace.Style/scripts/shoelace-tab-group-interop.js";
 
-    private readonly Lazy<ValueTask<IJSObjectReference>> _module;
     private readonly ConcurrentDictionary<string, TabRegistration> _tabs = [];
-
-    public ShoelaceTabGroup()
-    {
-        _module = new(() => JSRuntime.InvokeAsync<IJSObjectReference>("import", ScriptModule));
-    }
+    private IJSObjectReference? _module;
 
     /// <summary>
     /// Used for grouping tab panels in the tab group.
@@ -134,7 +129,7 @@ public partial class ShoelaceTabGroup : ShoelaceComponentBase
             throw new ArgumentException($"No panel registered with tab '${tab.Panel}'");
         }
 
-        var module = await _module.Value;
+        var module = await ImportModuleAsync();
         await module.InvokeVoidAsync("unregister", Element, tab.Element, panel.Element);
     }
 
@@ -147,6 +142,8 @@ public partial class ShoelaceTabGroup : ShoelaceComponentBase
     /// Handler for the <see cref="OnTabShow"/> event.
     /// </summary>
     protected virtual Task TabShowHandlerAsync(TabShowEventArgs e) => OnTabShow.InvokeAsync(e);
+
+    private async Task<IJSObjectReference> ImportModuleAsync() => _module ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import", ScriptModule);
 
     #region Instance Methods
 
