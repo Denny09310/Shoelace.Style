@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using Shoelace.Style.Events;
 
 namespace Shoelace.Style.Components;
 
@@ -60,13 +59,13 @@ public partial class ShoelaceAnimatedImage : ShoelaceComponentBase
     /// Handler for the OnError event
     /// </summary>
     /// <returns></returns>
-    protected virtual async Task ErrorHandlerAsync() => await OnError.InvokeAsync();
+    protected virtual Task ErrorHandlerAsync() => OnError.InvokeAsync();
 
     /// <summary>
     /// Handler for the OnLoad event
     /// </summary>
     /// <returns></returns>
-    protected virtual async Task LoadHandlerAsync() => await OnLoad.InvokeAsync();
+    protected virtual Task LoadHandlerAsync() => OnLoad.InvokeAsync();
 
     private async Task PlayChangeHandlerAsync()
     {

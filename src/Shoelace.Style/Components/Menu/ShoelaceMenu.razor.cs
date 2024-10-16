@@ -30,5 +30,5 @@ public partial class ShoelaceMenu : ShoelaceComponentBase
     /// <summary>
     /// Handler for the OnSelect event.
     /// </summary>
-    protected virtual async Task SelectHandlerAsync(SelectEventArgs item) => await OnSelect.InvokeAsync(item);
+    protected virtual Task SelectHandlerAsync(SelectEventArgs item) => OnSelect.InvokeAsync(item);
 }

@@ -1,9 +1,7 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelaceInputBase<string?>
-@inject IJSRuntime JSRuntime
 
 <sl-color-picker @ref="Element"
-                 @attributes="AdditionalAttributes"
                  id="@Id"
                  class="@Class"
                  style="@Style"
@@ -24,4 +22,5 @@
                  uppercase="@Uppercase"
                  @onslchange="ChangeHandlerAsync"
                  @onslblur="BlurHandlerAsync"
-                 @onslfocus="FocusHandlerAsync"></sl-color-picker>
+                 @onslfocus="FocusHandlerAsync"
+                 @attributes="AdditionalAttributes"></sl-color-picker>

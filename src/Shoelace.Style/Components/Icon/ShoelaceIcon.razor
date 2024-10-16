@@ -1,14 +1,13 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelaceComponentBase
 
-<sl-icon @ref="Element"
-         @attributes="AdditionalAttributes"
+<sl-icon id="@Id"
          class="@Class"
-         id="@Id"
          style="@Style"
          label="@Label"
          library="@Library"
          name="@Name"
          src="@Src"
          @onslload="LoadHandlerAsync"
-         @onslerror="ErrorHandlerAsync"></sl-icon>
+         @onslerror="ErrorHandlerAsync"
+         @attributes="AdditionalAttributes"></sl-icon>

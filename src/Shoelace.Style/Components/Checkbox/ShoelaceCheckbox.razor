@@ -2,9 +2,8 @@
 @inherits ShoelaceInputBase<bool>
 
 <sl-checkbox @ref="Element"
-             @attributes="AdditionalAttributes"
-             class="@Class"
              id="@Id"
+             class="@Class"
              style="@Style"
              default-value="@DefaultValue"
              disabled="@Disabled"
@@ -17,6 +16,7 @@
              checked="@Checked"
              default-checked="@DefaultChecked"
              indeterminate="@Indeterminate"
-             @onslcheckedchange="CheckedChangeHandlerAsync">
+             @onslcheckedchange="CheckedChangeHandlerAsync"
+             @attributes="AdditionalAttributes">
     @Label
 </sl-checkbox>

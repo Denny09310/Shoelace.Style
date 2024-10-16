@@ -2,9 +2,8 @@
 @inherits ShoelacePresentableBase
 
 <sl-drawer @ref="Element"
-           @attributes="AdditionalAttributes"
-           class="@Class"
            id="@Id"
+           class="@Class"
            style="@Style"
            open="@Open"
            contained="@Contained"
@@ -16,6 +15,7 @@
            @onslhide="HideHandlerAsync"
            @onslafterhide="AfterHideHandlerAsync"
            @onslinitialfocus="InitialFocusHandlerAsync"
-           @onslrequestclose="RequestCloseHandlerAsync">
+           @onslrequestclose="RequestCloseHandlerAsync"
+           @attributes="AdditionalAttributes">
     @ChildContent
 </sl-drawer>

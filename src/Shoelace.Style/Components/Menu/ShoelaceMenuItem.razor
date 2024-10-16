@@ -2,14 +2,14 @@
 @inherits ShoelaceComponentBase
 
 <sl-menu-item @ref="Element"
-              @attributes="AdditionalAttributes"
-              class="@Class"
               id="@Id"
+              class="@Class"
               style="@Style"
               checked="@Checked"
               disabled="@Disabled"
               loading="@Loading"
               type="@Type"
-              value="@Value">
+              value="@Value"
+              @attributes="AdditionalAttributes">
     @ChildContent
 </sl-menu-item>

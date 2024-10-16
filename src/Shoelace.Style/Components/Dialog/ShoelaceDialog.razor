@@ -2,9 +2,8 @@
 @inherits ShoelacePresentableBase
 
 <sl-dialog @ref="Element"
-           @attributes="AdditionalAttributes"
-           class="@Class"
            id="@Id"
+           class="@Class"
            style="@Style"
            open="@Open"
            label="@Label"
@@ -14,7 +13,8 @@
            @onslhide="HideHandlerAsync"
            @onslafterhide="AfterHideHandlerAsync"
            @onslinitialfocus="InitialFocusHandlerAsync"
-           @onslrequestclose="RequestCloseHandlerAsync">
+           @onslrequestclose="RequestCloseHandlerAsync"
+           @attributes="AdditionalAttributes">
     <CascadingValue Value="this">
         @ChildContent
     </CascadingValue>

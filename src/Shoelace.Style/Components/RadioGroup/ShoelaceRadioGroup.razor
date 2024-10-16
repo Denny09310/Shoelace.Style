@@ -3,7 +3,6 @@
 @typeparam TValue
 
 <sl-radio-group @ref="Element"
-                @attributes="AdditionalAttributes"
                 id="@Id"
                 class="@Class"
                 style="@Style"
@@ -15,6 +14,7 @@
                 size="@Size"
                 value="@Value"
                 @onslchange="ChangeHandlerAsync"
-                @onslinvalid="InvalidHandlerAsync">
+                @onslinvalid="InvalidHandlerAsync"
+                @attributes="AdditionalAttributes">
     @ChildContent
 </sl-radio-group>

@@ -61,11 +61,11 @@ public partial class ShoelaceIcon : ShoelaceComponentBase
     /// Handler for the OnError event
     /// </summary>
     /// <returns></returns>
-    protected virtual async Task ErrorHandlerAsync() => await OnError.InvokeAsync();
+    protected virtual Task ErrorHandlerAsync() => OnError.InvokeAsync();
 
     /// <summary>
     /// Handler for the OnLoad event
     /// </summary>
     /// <returns></returns>
-    protected virtual async Task LoadHandlerAsync() => await OnLoad.InvokeAsync();
+    protected virtual Task LoadHandlerAsync() => OnLoad.InvokeAsync();
 }

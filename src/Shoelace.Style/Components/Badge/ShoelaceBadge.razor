@@ -1,12 +1,12 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelaceComponentBase
 
-<sl-badge @attributes="AdditionalAttributes"
+<sl-badge id="@Id"
           class="@Class"
-          id="@Id"
           style="@Style"
           pill="@Pill"
           pulse="@Pulse"
-          variant="@Variant">
+          variant="@Variant"
+          @attributes="AdditionalAttributes">
     @ChildContent
 </sl-badge>

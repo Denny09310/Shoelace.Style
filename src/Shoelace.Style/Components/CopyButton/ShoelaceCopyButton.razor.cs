@@ -105,11 +105,11 @@ public partial class ShoelaceCopyButton : ShoelaceComponentBase
     /// Handler for OnCopy event.
     /// </summary>
     /// <returns></returns>
-    protected virtual async Task CopyHandlerAsync() => await OnCopy.InvokeAsync();
+    protected virtual Task CopyHandlerAsync() => OnCopy.InvokeAsync();
 
     /// <summary>
     /// Handler for OnError event.
     /// </summary>
     /// <returns></returns>
-    protected virtual async Task ErrorHandlerAsync() => await OnError.InvokeAsync();
+    protected virtual Task ErrorHandlerAsync() => OnError.InvokeAsync();
 }

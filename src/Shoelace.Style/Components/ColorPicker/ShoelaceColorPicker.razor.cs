@@ -81,12 +81,12 @@ public partial class ShoelaceColorPicker : ShoelaceInputBase<string?>, IFocusabl
     /// <summary>
     /// Handler for the OnBluer event.
     /// </summary>
-    protected virtual async Task BlurHandlerAsync() => await OnBlur.InvokeAsync();
+    protected virtual Task BlurHandlerAsync() => OnBlur.InvokeAsync();
 
     /// <summary>
     /// Handler for the OnFocus event.
     /// </summary>
-    protected virtual async Task FocusHandlerAsync() => await OnFocus.InvokeAsync();
+    protected virtual Task FocusHandlerAsync() => OnFocus.InvokeAsync();
 
     /// <inheritdoc />
     protected override async Task OnAfterRenderAsync(bool firstRender)

@@ -2,9 +2,8 @@
 @inherits ShoelacePresentableBase
 
 <sl-alert @ref="Element"
-          @attributes="AdditionalAttributes"
-          class="@Class"
           id="@Id"
+          class="@Class"
           style="@Style"
           closeable="@Closable"
           countdown="@Countdown"
@@ -14,6 +13,7 @@
           @onslshow="ShowHandlerAsync"
           @onslaftershow="AfterShowHandlerAsync"
           @onslhide="HideHandlerAsync"
-          @onslafterhide="AfterHideHandlerAsync">
+          @onslafterhide="AfterHideHandlerAsync"
+          @attributes="AdditionalAttributes">
     @ChildContent
 </sl-alert>

@@ -2,9 +2,8 @@
 @inherits ShoelacePresentableBase
 
 <sl-details @ref="Element"
-            @attributes="AdditionalAttributes"
-            class="@Class"
             id="@Id"
+            class="@Class"
             style="@Style"
             open="@Open"
             disabled="@Disabled"
@@ -12,6 +11,7 @@
             @onslshow="ShowHandlerAsync"
             @onslaftershow="AfterShowHandlerAsync"
             @onslhide="HideHandlerAsync"
-            @onslafterhide="AfterHideHandlerAsync">
+            @onslafterhide="AfterHideHandlerAsync"
+            @attributes="AdditionalAttributes">
     @ChildContent
 </sl-details>

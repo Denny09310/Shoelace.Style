@@ -1,11 +1,11 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelaceComponentBase
 
-<sl-resize-observer @ref="Element"
+<sl-resize-observer id="@Id"
                     class="@Class"
-                    id="@Id"
                     style="@Style"
                     disabled="@Disabled"
-                    @onslresize="ResizeHandlerAsync">
+                    @onslresize="ResizeHandlerAsync"
+                    @attributes="AdditionalAttributes">
     @ChildContent
 </sl-resize-observer>

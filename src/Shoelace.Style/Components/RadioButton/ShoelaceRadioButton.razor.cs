@@ -8,8 +8,8 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/radio-button"/>
 /// </remarks>
-/// <typeparam name="T">The type of the radio buttton value</typeparam>
-public partial class ShoelaceRadioButton<T> : ShoelaceRadio<T>
+/// <typeparam name="TValue">The type of the radio buttton value</typeparam>
+public partial class ShoelaceRadioButton<TValue> : ShoelaceRadio<TValue>
 {
     #region Properties
 

@@ -9,7 +9,7 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/resize-observer"/>
 /// </remarks>
-public partial class ShoelaceResizeObserver
+public partial class ShoelaceResizeObserver : ShoelaceComponentBase
 {
     /// <summary>
     /// One or more elements to watch for resizing.
@@ -41,5 +41,5 @@ public partial class ShoelaceResizeObserver
     /// Handler for the OnResize event
     /// </summary>
     /// <returns></returns>
-    protected virtual async Task ResizeHandlerAsync(ResizeEventArgs e) => await OnResize.InvokeAsync(e);
+    protected virtual Task ResizeHandlerAsync(ResizeEventArgs e) => OnResize.InvokeAsync(e);
 }

@@ -1,12 +1,12 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelaceComponentBase
 
-<sl-breadcrumb-item @attributes="AdditionalAttributes"
+<sl-breadcrumb-item id="@Id"
                     class="@Class"
-                    id="@Id"
                     style="@Style"
                     href="@Href"
                     rel="@Rel"
-                    target="@Target">
+                    target="@Target"
+                    @attributes="AdditionalAttributes">
     @ChildContent
 </sl-breadcrumb-item>
