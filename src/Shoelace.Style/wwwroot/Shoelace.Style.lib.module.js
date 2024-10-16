@@ -57,8 +57,9 @@ const events = [
     {
         name: 'sltabshow',
         browserEventName: 'sl-tab-show',
-        createEventArgs: ({ detail }) => ({
-            Name: detail.name
+        createEventArgs: ({ target, detail }) => ({
+            Name: detail.name,
+            Index: target.tabs.findIndex(tab => tab === target.activeTab)
         })
     },
     {
