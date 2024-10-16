@@ -1,0 +1,14 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelaceComponentBase
+
+<sl-tab id="@Id"
+        class="@Class"
+        style="@Style"
+        active="@Active"
+        closeable="@Closeable"
+        disabled="@Disabled"
+        panel="@Panel"
+        @onslclose="CloseHandlerAsync"
+        @attributes="AdditionalAttributes">
+    @ChildContent
+</sl-tab>

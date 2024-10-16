@@ -1,5 +1,9 @@
 const events = [
     {
+        name: 'slclose',
+        browserEventName: 'sl-close',
+    },
+    {
         name: 'slcopy',
         browserEventName: 'sl-copy',
     },
