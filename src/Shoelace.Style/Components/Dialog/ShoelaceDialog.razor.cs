@@ -107,7 +107,7 @@ public partial class ShoelaceDialog : ShoelacePresentableBase
 
 
     /// <summary>
-    /// Handler for OnInitialFocuse event.
+    /// Handler for <see cref="OnInitialFocus"/> event.
     /// </summary>
     /// <returns></returns>
     protected virtual Task InitialFocusHandlerAsync() => OnInitialFocus.InvokeAsync();
@@ -125,13 +125,17 @@ public partial class ShoelaceDialog : ShoelacePresentableBase
     }
 
     /// <summary>
-    /// Handler for OnRequestClose event.
+    /// Handler for <see cref="OnRequestClose"/> event.
     /// </summary>
     /// <returns></returns>
     protected virtual async Task RequestCloseHandlerAsync(RequestCloseEventArgs e)
     {
         await OnRequestClose.InvokeAsync(e);
-        await CloseAsync();
+        
+        if (Provider != null)
+        {
+            await CloseAsync();
+        }
     }
 
     private async Task SetOpen(bool open)
