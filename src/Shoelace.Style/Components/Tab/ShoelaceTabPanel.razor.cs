@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 
 namespace Shoelace.Style.Components;
 
@@ -41,9 +40,9 @@ public partial class ShoelaceTabPanel : ShoelaceComponentBase
     #endregion Properties
 
     /// <inheritdoc/>
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        base.OnInitialized();
-        Tabs.RegisterPanel(this);
+        await base.OnInitializedAsync();
+        await Tabs.RegisterPanelAsync(this);
     }
 }

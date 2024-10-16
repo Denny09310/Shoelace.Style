@@ -20,6 +20,10 @@ const events = [
         browserEventName: 'sl-hide',
     },
     {
+        name: 'slremove',
+        browserEventName: 'sl-remove',
+    },
+    {
         name: 'slafterhide',
         browserEventName: 'sl-after-hide',
     },
@@ -57,8 +61,9 @@ const events = [
     {
         name: 'sltabshow',
         browserEventName: 'sl-tab-show',
-        createEventArgs: ({ detail }) => ({
-            Name: detail.name
+        createEventArgs: ({ target, detail }) => ({
+            Name: detail.name,
+            Index: target.tabs.findIndex(tab => tab === target.activeTab)
         })
     },
     {

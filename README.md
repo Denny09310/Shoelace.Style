@@ -126,7 +126,7 @@ builder.Services.AddShoelaceStyle();
 - [X] Tab (`<sl-tab>`)
 - [X] Tab Group (`<sl-tab-group>`)
 - [X] Tab Panel (`<sl-tab-panel>`)
-- [ ] Tag (`<sl-tag>`)
+- [X] Tag (`<sl-tag>`)
 - [X] Textarea (`<sl-textarea>`)
 - [X] Tooltip (`<sl-tooltip>`)
 - [ ] Tree (`<sl-tree>`)

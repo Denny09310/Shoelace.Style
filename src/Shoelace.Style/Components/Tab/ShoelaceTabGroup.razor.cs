@@ -16,13 +16,19 @@ public partial class ShoelaceTabGroup : ShoelaceComponentBase
     private const string ScriptModule = "./_content/Shoelace.Style/scripts/shoelace-tab-group-interop.js";
 
     private readonly ConcurrentDictionary<string, TabRegistration> _tabs = [];
-    private IJSObjectReference? _module;
+    private IJSObjectReference? _reference;
 
     /// <summary>
     /// Used for grouping tab panels in the tab group.
     /// </summary>
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>
+    /// Represent the internal state of the tab group
+    /// </summary>
+    [Parameter]
+    public ShoelaceTabState State { get; set; } = new();
 
     #region Properties
 
@@ -83,7 +89,7 @@ public partial class ShoelaceTabGroup : ShoelaceComponentBase
     /// <remarks>
     /// This method should be called when a new <see cref="ShoelaceTabPanel"/> is initialized to associate it with an already registered tab.
     /// </remarks>
-    public void RegisterPanel(ShoelaceTabPanel panel)
+    public Task RegisterPanelAsync(ShoelaceTabPanel panel)
     {
         if (!_tabs.TryGetValue(panel.Name, out var registration))
         {
@@ -91,6 +97,9 @@ public partial class ShoelaceTabGroup : ShoelaceComponentBase
         }
 
         _tabs[panel.Name] = registration with { Panel = panel };
+        State.TabsCount++;
+
+        return Task.CompletedTask;
     }
 
     /// <summary>
@@ -129,8 +138,27 @@ public partial class ShoelaceTabGroup : ShoelaceComponentBase
             throw new ArgumentException($"No panel registered with tab '${tab.Panel}'");
         }
 
-        var module = await ImportModuleAsync();
-        await module.InvokeVoidAsync("unregister", Element, tab.Element, panel.Element);
+        if (_reference == null)
+        {
+            throw new ArgumentException($"Refernce not initialized.");
+        }
+
+        await _reference.InvokeVoidAsync("remove", tab.Element, panel.Element);
+        State.TabsCount--;
+    }
+
+    ///<inheritdoc/>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+
+        if (firstRender)
+        {
+            var module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", ScriptModule);
+            _reference = await module.InvokeAsync<IJSObjectReference>("init", Element);
+
+            await module.DisposeAsync();
+        }
     }
 
     /// <summary>
@@ -141,17 +169,41 @@ public partial class ShoelaceTabGroup : ShoelaceComponentBase
     /// <summary>
     /// Handler for the <see cref="OnTabShow"/> event.
     /// </summary>
-    protected virtual Task TabShowHandlerAsync(TabShowEventArgs e) => OnTabShow.InvokeAsync(e);
+    protected virtual async Task TabShowHandlerAsync(TabShowEventArgs e)
+    {
+        State.ActiveName = e.Name;
+        State.ActiveIndex = e.Index;
 
-    private async Task<IJSObjectReference> ImportModuleAsync() => _module ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import", ScriptModule);
+        await OnTabShow.InvokeAsync(e);
+    }
 
     #region Instance Methods
 
     /// <summary>
-    /// Shows the specified tab panel.
+    /// Shows the next tab panel.
     /// </summary>
-    /// <param name="panel">The name of the panel to show</param>
-    public ValueTask ShowAsync(ElementReference panel) => Element.InvokeVoidAsync("show", panel);
+    public ValueTask NextAsync()
+    {
+        if (_reference == null)
+        {
+            throw new ArgumentException($"Refernce not initialized.");
+        }
+
+        return _reference.InvokeVoidAsync("next");
+    }
+
+    /// <summary>
+    /// Shows the previous tab panel.
+    /// </summary>
+    public ValueTask PreviousAsync()
+    {
+        if (_reference == null)
+        {
+            throw new ArgumentException($"Refernce not initialized.");
+        }
+
+        return _reference.InvokeVoidAsync("previous");
+    }
 
     #endregion Instance Methods
 

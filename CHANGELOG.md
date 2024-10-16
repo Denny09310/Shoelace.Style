@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.0] - 2024-10-16
+
+### 🚀 Features
+
+- Added tab group state, added programmatic tab navigation
+- Added sl-tag, added sl-remove event registration
+
+### ⚙️ Miscellaneous Tasks
+
+- Reoredered events
+
 ## [1.6.0] - 2024-10-16
 
 ### 🚀 Features
@@ -22,6 +33,7 @@ All notable changes to this project will be documented in this file.
 - Changed attributes to shoelace ones
 - Reordered attributes to better fit guidelines, cleanup
 - Added documentation for sl-tab-show/sl-tab-hidden
+- Bump version, updated CHANGELOG.md, updated README.md
 
 ## [1.5.0] - 2024-10-15
 

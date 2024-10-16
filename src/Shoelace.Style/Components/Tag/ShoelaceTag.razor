@@ -1,0 +1,14 @@
+@namespace Shoelace.Style.Components
+@inherits ShoelaceComponentBase
+
+<sl-tag id="@Id"
+        class="@Class"
+        style="@Style"
+        pill="@Pill"
+        removable="@Removable"
+        size="@Size"
+        variant="@Variant"
+        @onslremove="RemoveHandlerAsync"
+        @attributes="AdditionalAttributes">
+    @ChildContent
+</sl-tag>

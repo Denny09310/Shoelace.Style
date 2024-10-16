@@ -9,10 +9,12 @@
 public class TabShowEventArgs : EventArgs
 {
     /// <summary>
-    /// Gets or sets the name of the tab that was shown.
-    /// </summary>
-    /// <value>
     /// A string representing the name of the tab that was shown.
-    /// </value>
+    /// </summary>
     public string Name { get; set; } = default!;
+
+    /// <summary>
+    /// The index of the current active tab
+    /// </summary>
+    public int Index { get; set; }
 }
