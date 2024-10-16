@@ -1,5 +1,6 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelaceComponentBase
+@inject IJSRuntime JSRuntime
 
 <sl-tab-group @ref="Element"
               id="@Id"
@@ -8,6 +9,11 @@
               activation="@Activation"
               fixed-scroll-controls="@FixedScrollControls"
               no-scroll-controls="@NoScrollControls"
-              placement="@Placement">
-    @ChildContent
+              placement="@Placement"
+              @onsltabhide="TabHideHandlerAsync"
+              @onsltabshow="TabShowHandlerAsync"
+              @attributes="@AdditionalAttributes">
+    <CascadingValue Value="this">
+        @ChildContent
+    </CascadingValue>
 </sl-tab-group>

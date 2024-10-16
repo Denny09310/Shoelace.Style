@@ -34,6 +34,7 @@
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
+		<None Include="wwwroot\scripts\shoelace-tab-group-interop.js" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace Shoelace.Style.Components;
 
@@ -16,6 +17,12 @@ public partial class ShoelaceTab : ShoelaceComponentBase
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
+    /// <summary>
+    /// The parent <see cref="ShoelaceTabGroup"/>.
+    /// </summary>
+    [CascadingParameter]
+    public ShoelaceTabGroup Tabs { get; set; } = default!;
+
     #region Properties
 
     /// <summary>
@@ -28,7 +35,7 @@ public partial class ShoelaceTab : ShoelaceComponentBase
     /// Makes the tab closable and shows a close button.
     /// </summary>
     [Parameter]
-    public bool Closeable { get; set; }
+    public bool Closable { get; set; }
 
     /// <summary>
     /// Disables the tab and prevents selection.
@@ -59,5 +66,16 @@ public partial class ShoelaceTab : ShoelaceComponentBase
     /// <summary>
     /// Handler for the OnClose event.
     /// </summary>
-    protected virtual Task CloseHandlerAsync() => OnClose.InvokeAsync();
+    protected virtual async Task CloseHandlerAsync()
+    {
+        await Tabs.UnregisterTabAsync(Panel);
+        await OnClose.InvokeAsync();
+    }
+
+    /// <inheritdoc/>
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Tabs.RegisterTab(this);
+    }
 }
