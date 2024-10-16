@@ -78,13 +78,13 @@ public partial class ShoelaceDrawer : ShoelacePresentableBase
     /// Handler for OnInitialFocuse event.
     /// </summary>
     /// <returns></returns>
-    protected virtual async Task InitialFocusHandlerAsync() => await OnInitialFocus.InvokeAsync();
+    protected virtual Task InitialFocusHandlerAsync() => OnInitialFocus.InvokeAsync();
 
     /// <summary>
     /// Handler for OnRequestClose event.
     /// </summary>
     /// <returns></returns>
-    protected virtual async Task RequestCloseHandlerAsync(RequestCloseEventArgs e) => await OnRequestClose.InvokeAsync(e);
+    protected virtual Task RequestCloseHandlerAsync(RequestCloseEventArgs e) => OnRequestClose.InvokeAsync(e);
 
     #region Instance Methods
 

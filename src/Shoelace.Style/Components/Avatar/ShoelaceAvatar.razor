@@ -1,16 +1,15 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelaceComponentBase
 
-<sl-avatar @ref="Element"
-           @attributes="AdditionalAttributes"
+<sl-avatar id="@Id"
            class="@Class"
-           id="@Id"
            style="@Style"
            image="@Image"
            initials="@Initials"
            label="@Label"
            loading="@Loading"
            shape="@Shape"
-           @onslerror="ErrorHandlerAsync">
+           @onslerror="ErrorHandlerAsync"
+           @attributes="AdditionalAttributes">
     @ChildContent
 </sl-avatar>

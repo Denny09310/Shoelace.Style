@@ -1,10 +1,10 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelaceComponentBase
 
-<sl-menu @attributes="AdditionalAttributes"
+<sl-menu id="@Id"
          class="@Class"
-         id="@Id"
          style="@Style"
-         @onslselect="SelectHandlerAsync">
+         @onslselect="SelectHandlerAsync"
+         @attributes="AdditionalAttributes">
     @ChildContent
 </sl-menu>

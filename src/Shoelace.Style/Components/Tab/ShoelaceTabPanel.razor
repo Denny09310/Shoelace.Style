@@ -1,15 +1,12 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelaceComponentBase
 
-<sl-menu-item @ref="Element"
+<sl-tab-panel @ref="Element"
               id="@Id"
               class="@Class"
               style="@Style"
-              checked="@Checked"
-              disabled="@Disabled"
-              loading="@Loading"
-              type="@Type"
-              value="@Value"
+              active="@Active"
+              name="@Name"
               @attributes="AdditionalAttributes">
     @ChildContent
-</sl-menu-item>
+</sl-tab-panel>

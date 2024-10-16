@@ -1,12 +1,12 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelaceComponentBase
 
-<sl-progress-bar @attributes="AdditionalAttributes"
-                class="@Class"
-                id="@Id"
-                style="@Style"
-                indeterminate="@Indeterminate"
-                label="@Label"
-                value="@Value">
+<sl-progress-bar id="@Id"
+                 class="@Class"
+                 style="@Style"
+                 indeterminate="@Indeterminate"
+                 label="@Label"
+                 value="@Value"
+                 @attributes="AdditionalAttributes">
     @ChildContent
 </sl-progress-bar>

@@ -186,7 +186,7 @@ public partial class ShoelaceInput : ShoelaceInputBase<string?>, ISelectable, IC
     /// <summary>
     /// Handler for the OnClear event.
     /// </summary>
-    protected virtual async Task ClearHandlerAsync() => await OnClear.InvokeAsync();
+    protected virtual Task ClearHandlerAsync() => OnClear.InvokeAsync();
 
     /// <inheritdoc/>
     protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)

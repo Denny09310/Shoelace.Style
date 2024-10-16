@@ -1,9 +1,9 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelaceComponentBase
 
-<sl-card @attributes="AdditionalAttributes"
+<sl-card id="@Id"
          class="@Class"
-         id="@Id"
-         style="@Style">
+         style="@Style"
+         @attributes="AdditionalAttributes">
     @ChildContent
 </sl-card>

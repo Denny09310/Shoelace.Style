@@ -68,17 +68,17 @@ public partial class ShoelaceRating<TValue> : ShoelaceInputBase<TValue>, IFocusa
     /// <summary>
     /// Handler for the OnBlur event.
     /// </summary>
-    protected virtual async Task BlurHandlerAsync() => await OnBlur.InvokeAsync();
+    protected virtual Task BlurHandlerAsync() => OnBlur.InvokeAsync();
 
     /// <summary>
     /// Handler for the OnFocus event.
     /// </summary>
-    protected virtual async Task FocusHandlerAsync() => await OnFocus.InvokeAsync();
+    protected virtual Task FocusHandlerAsync() => OnFocus.InvokeAsync();
 
     /// <summary>
     /// Handler for the OnHover event.
     /// </summary>
-    protected virtual async Task HoverHandlerAsync(HoverEventArgs e) => await OnHover.InvokeAsync(e);
+    protected virtual Task HoverHandlerAsync(HoverEventArgs e) => OnHover.InvokeAsync(e);
 
     /// <inheritdoc/>
     protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)

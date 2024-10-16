@@ -86,12 +86,12 @@ public partial class ShoelaceIconButton : ShoelaceComponentBase, IFocusable
     /// <summary>
     /// Handler for the OnBlur event.
     /// </summary>
-    protected virtual async Task BlurHandlerAsync() => await OnBlur.InvokeAsync();
+    protected virtual Task BlurHandlerAsync() => OnBlur.InvokeAsync();
 
     /// <summary>
     /// Handler for the OnFocus event.
     /// </summary>
-    protected virtual async Task FocusHandlerAsync() => await OnFocus.InvokeAsync();
+    protected virtual Task FocusHandlerAsync() => OnFocus.InvokeAsync();
 
     #region Instance Methods
 

@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.0] - 2024-10-16
+
+### 🚀 Features
+
+- Added sl-tab, added sl-close event registration
+- Added sl-tab-group, added sl-tab-hide and sl-tab-show registration
+- Added closable behavior, moved components in one folder
+
+### 🐛 Bug Fixes
+
+- Invalid form styles, revert back to aria-invalid
+- Missing EventArgs inheritance on events
+- Wrong usage of lazy values
+
+### ⚙️ Miscellaneous Tasks
+
+- Better naming for static files
+- Changed attributes to shoelace ones
+- Reordered attributes to better fit guidelines, cleanup
+- Added documentation for sl-tab-show/sl-tab-hidden
+
 ## [1.5.0] - 2024-10-15
 
 ### 🚀 Features
@@ -21,6 +42,7 @@ All notable changes to this project will be documented in this file.
 ### ⚙️ Miscellaneous Tasks
 
 - Removed unusued documentation
+- Bump version, updated CHANGELOG.md, updated README.md
 
 ## [1.4.0] - 2024-10-15
 

@@ -2,7 +2,6 @@
 @inherits ShoelaceCheckbox
 
 <sl-switch @ref="Element"
-           @attributes="AdditionalAttributes"
            class="@Class"
            id="@Id"
            style="@Style"
@@ -16,6 +15,7 @@
            value="@Value"
            checked="@Checked"
            default-checked="@DefaultChecked"
-           @onslcheckedchange="CheckedChangeHandlerAsync">
+           @onslcheckedchange="CheckedChangeHandlerAsync"
+           @attributes="AdditionalAttributes">
     @Label
 </sl-switch>

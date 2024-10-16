@@ -2,7 +2,6 @@
 @inherits ShoelacePresentableBase
 
 <sl-tooltip @ref="Element"
-            @attributes="AdditionalAttributes"
             class="@Class"
             id="@Id"
             style="@Style"
@@ -17,6 +16,7 @@
             @onslshow="ShowHandlerAsync"
             @onslaftershow="AfterShowHandlerAsync"
             @onslhide="HideHandlerAsync"
-            @onslafterhide="AfterHideHandlerAsync">
+            @onslafterhide="AfterHideHandlerAsync"
+            @attributes="AdditionalAttributes">
     @ChildContent
 </sl-tooltip>

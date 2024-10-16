@@ -10,8 +10,8 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/radio"/>
 /// </remarks>
-/// <typeparam name="T">The type of the radio value</typeparam>
-public partial class ShoelaceRadio<T> : ShoelaceComponentBase, IFocusable
+/// <typeparam name="TValue">The type of the radio value</typeparam>
+public partial class ShoelaceRadio<TValue> : ShoelaceComponentBase, IFocusable
 {
     /// <summary>
     /// The radio’s label.
@@ -42,7 +42,7 @@ public partial class ShoelaceRadio<T> : ShoelaceComponentBase, IFocusable
     /// </summary>
     [Parameter]
     [EditorRequired]
-    public T Value { get; set; } = default!;
+    public TValue Value { get; set; } = default!;
 
     #endregion Properties
 
@@ -59,12 +59,12 @@ public partial class ShoelaceRadio<T> : ShoelaceComponentBase, IFocusable
     /// <summary>
     /// Handler for the OnBluer event.
     /// </summary>
-    protected virtual async Task BlurHandlerAsync() => await OnBlur.InvokeAsync();
+    protected virtual Task BlurHandlerAsync() => OnBlur.InvokeAsync();
 
     /// <summary>
     /// Handler for the OnFocus event.
     /// </summary>
-    protected virtual async Task FocusHandlerAsync() => await OnFocus.InvokeAsync();
+    protected virtual Task FocusHandlerAsync() => OnFocus.InvokeAsync();
 
     #region Instance Properties
 

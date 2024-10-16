@@ -2,13 +2,13 @@
 @inherits ShoelaceComponentBase
 
 <sl-animated-image @ref="Element"
-                   @attributes="AdditionalAttributes"
-                   class="@Class"
                    id="@Id"
+                   class="@Class"
                    style="@Style"
                    alt="@Alt"
                    src="@Src"
                    play="@Play"
                    @onslload="LoadHandlerAsync"
                    @onslerror="ErrorHandlerAsync"
-                   @onclick="PlayChangeHandlerAsync"></sl-animated-image>
+                   @onclick="PlayChangeHandlerAsync"
+                   @attributes="AdditionalAttributes"></sl-animated-image>

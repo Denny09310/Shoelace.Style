@@ -1,11 +1,11 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelaceComponentBase
 
-<sl-progress-ring @attributes="AdditionalAttributes"
+<sl-progress-ring id="@Id"
                   class="@Class"
-                  id="@Id"
                   style="@Style"
                   label="@Label"
-                  value="@Value">
+                  value="@Value"
+                  @attributes="AdditionalAttributes">
     @ChildContent
 </sl-progress-ring>

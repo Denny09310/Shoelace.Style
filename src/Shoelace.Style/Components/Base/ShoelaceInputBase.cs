@@ -376,7 +376,7 @@ public abstract partial class ShoelaceInputBase<TValue> : ShoelaceComponentBase,
         return newDictionaryCreated;
     }
 
-    private void OnValidateStateChanged(object? sender, ValidationStateChangedEventArgs eventArgs)
+    private void OnValidateStateChanged(object? sender, ValidationStateChangedEventArgs e)
     {
         UpdateAdditionalValidationAttributes();
         InvokeAsync(StateHasChanged);

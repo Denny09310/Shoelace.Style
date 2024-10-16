@@ -141,27 +141,27 @@ public partial class ShoelaceSelect<TValue> : ShoelaceInputBase<TValue>, ICleara
     /// <summary>
     /// Handler for the OnBlur event.
     /// </summary>
-    protected virtual async Task BlurHandlerAsync() => await OnBlur.InvokeAsync();
+    protected virtual Task BlurHandlerAsync() => OnBlur.InvokeAsync();
 
     /// <summary>
     /// Handler for the OnClrar event.
     /// </summary>
-    protected virtual async Task ClearHandlerAsync() => await OnClear.InvokeAsync();
+    protected virtual Task ClearHandlerAsync() => OnClear.InvokeAsync();
 
     /// <summary>
     /// Handler for the OnFocus event.
     /// </summary>
-    protected virtual async Task FocusHandlerAsync() => await OnFocus.InvokeAsync();
+    protected virtual Task FocusHandlerAsync() => OnFocus.InvokeAsync();
 
     /// <summary>
     /// Handler for the OnHide event.
     /// </summary>
-    protected virtual async Task HideHandlerAsync() => await OnHide.InvokeAsync();
+    protected virtual Task HideHandlerAsync() => OnHide.InvokeAsync();
 
     /// <summary>
     /// Handler for the OnShow event.
     /// </summary>
-    protected virtual async Task ShowHandlerAsync() => await OnShow.InvokeAsync();
+    protected virtual Task ShowHandlerAsync() => OnShow.InvokeAsync();
 
     ///<inheritdoc/>
     protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)

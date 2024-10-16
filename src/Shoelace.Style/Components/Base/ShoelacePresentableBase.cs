@@ -67,12 +67,12 @@ public abstract class ShoelacePresentableBase : ShoelaceComponentBase, IPresenta
     /// <summary>
     /// Handler for the OnHide event.
     /// </summary>
-    protected virtual async Task HideHandlerAsync() => await OnHide.InvokeAsync();
+    protected virtual Task HideHandlerAsync() => OnHide.InvokeAsync();
 
     /// <summary>
     /// Handler for the OnShow event.
     /// </summary>
-    protected virtual async Task ShowHandlerAsync() => await OnShow.InvokeAsync();
+    protected virtual Task ShowHandlerAsync() => OnShow.InvokeAsync();
 
     #region Instance Methods
 

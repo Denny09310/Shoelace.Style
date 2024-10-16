@@ -110,7 +110,7 @@ public partial class ShoelaceDialog : ShoelacePresentableBase
     /// Handler for OnInitialFocuse event.
     /// </summary>
     /// <returns></returns>
-    protected virtual async Task InitialFocusHandlerAsync() => await OnInitialFocus.InvokeAsync();
+    protected virtual Task InitialFocusHandlerAsync() => OnInitialFocus.InvokeAsync();
 
     /// <inheritdoc />
     protected override async Task OnAfterRenderAsync(bool firstRender)

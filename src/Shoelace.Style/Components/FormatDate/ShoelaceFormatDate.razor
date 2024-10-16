@@ -1,9 +1,8 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelaceComponentBase
 
-<sl-format-date @attributes="AdditionalAttributes"
+<sl-format-date id="@Id"
                 class="@Class"
-                id="@Id"
                 style="@Style"
                 date="@(Date?.ToString("o", CultureInfo.InvariantCulture))"
                 day="@Day"
@@ -16,4 +15,5 @@
                 time-zone="@TimeZone"
                 time-zone-name="@TimeZoneName"
                 weekday="@Weekday"
-                year="@Year"></sl-format-date>
+                year="@Year"
+                @attributes="AdditionalAttributes"></sl-format-date>

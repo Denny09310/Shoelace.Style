@@ -1,16 +1,16 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelaceComponentBase
-@typeparam T
+@typeparam TValue
 
 <sl-radio @ref="Element"
-          @attributes="AdditionalAttributes"
-          class="@Class"
           id="@Id"
+          class="@Class"
           style="@Style"
           disabled="@Disabled"
           size="@Size"
           value="@Value"
           @onslblur="BlurHandlerAsync"
-          @onslfocus="FocusHandlerAsync">
+          @onslfocus="FocusHandlerAsync"
+          @attributes="AdditionalAttributes">
     @ChildContent
 </sl-radio>

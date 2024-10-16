@@ -71,5 +71,5 @@ public partial class ShoelaceAvatar : ShoelaceComponentBase
     /// Handler for the OnError event
     /// </summary>
     /// <returns></returns>
-    protected virtual async Task ErrorHandlerAsync() => await OnError.InvokeAsync();
+    protected virtual Task ErrorHandlerAsync() => OnError.InvokeAsync();
 }

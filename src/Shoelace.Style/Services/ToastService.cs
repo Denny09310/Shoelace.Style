@@ -67,9 +67,9 @@ public interface IToastService
 /// </summary>
 public class ToastService(IJSRuntime js) : IToastService, IAsyncDisposable
 {
-    private const string ScriptPath = "./_content/Shoelace.Style/index.js";
+    private const string ScriptPath = "./_content/Shoelace.Style/scripts/shoelace-alert-interop.js";
 
-    private IJSObjectReference? module;
+    private IJSObjectReference? _module;
 
     /// <summary>
     /// Disposes of the <see cref="ToastService"/> asynchronously, releasing JavaScript resources.
@@ -77,9 +77,9 @@ public class ToastService(IJSRuntime js) : IToastService, IAsyncDisposable
     /// <returns>A task that represents the asynchronous dispose operation.</returns>
     public async ValueTask DisposeAsync()
     {
-        if (module is not null)
+        if (_module != null)
         {
-            await module.DisposeAsync();
+            await _module.DisposeAsync();
         }
     }
 
@@ -104,13 +104,15 @@ public class ToastService(IJSRuntime js) : IToastService, IAsyncDisposable
     /// <inheritdoc />
     public async Task ToastAsync(string message, string? variant = null, string? icon = null, double? duration = null)
     {
-        await (await ImportModuleAsync()).InvokeVoidAsync("toast", message, new ToastOptions { Variant = variant, Duration = duration, Icon = icon });
+        var module = await ImportModuleAsync();
+        await module.InvokeVoidAsync("toast", message, new ToastOptions { Variant = variant, Duration = duration, Icon = icon });
     }
 
     /// <inheritdoc />
     public async Task ToastAsync(string message, ToastOptions? options = null)
     {
-        await (await ImportModuleAsync()).InvokeVoidAsync("toast", message, options);
+        var module = await ImportModuleAsync();
+        await module.InvokeVoidAsync("toast", message, options);
     }
 
     /// <inheritdoc />
@@ -119,14 +121,7 @@ public class ToastService(IJSRuntime js) : IToastService, IAsyncDisposable
         await ToastAsync(message, new ToastOptions { Variant = "warning", Icon = "exclamation-triangle" });
     }
 
-    /// <summary>
-    /// Imports the JavaScript module responsible for showing toast notifications.
-    /// </summary>
-    /// <returns>A task that represents the asynchronous import operation, containing the JavaScript module.</returns>
-    private async Task<IJSObjectReference> ImportModuleAsync()
-    {
-        return module ??= await js.InvokeAsync<IJSObjectReference>("import", ScriptPath);
-    }
+    private async Task<IJSObjectReference> ImportModuleAsync() => _module ??= await js.InvokeAsync<IJSObjectReference>(ScriptPath);
 }
 
 /// <summary>

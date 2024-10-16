@@ -3,7 +3,6 @@
 @typeparam TValue
 
 <sl-select @ref="Element"
-           @attributes="AdditionalAttributes"
            id="@Id"
            class="@Class"
            style="@Style"
@@ -33,6 +32,7 @@
            @onslshow="ShowHandlerAsync"
            @onslaftershow="AfterShowHandlerAsync"
            @onslhide="HideHandlerAsync"
-           @onslafterhide="AfterHideHandlerAsync">
+           @onslafterhide="AfterHideHandlerAsync"
+           @attributes="AdditionalAttributes">
     @ChildContent
 </sl-select>

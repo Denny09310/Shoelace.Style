@@ -3,7 +3,6 @@
 @typeparam TValue
 
 <sl-range @ref="Element"
-          @attributes="AdditionalAttributes"
           class="@Class"
           id="@Id"
           style="@Style"
@@ -21,6 +20,7 @@
           @onslchange="ChangeHandlerAsync"
           @onslinvalid="InvalidHandlerAsync"
           @onslblur="BlurHandlerAsync"
-          @onslfocus="FocusHandlerAsync">
+          @onslfocus="FocusHandlerAsync"
+          @attributes="AdditionalAttributes">
     @ChildContent
 </sl-range>

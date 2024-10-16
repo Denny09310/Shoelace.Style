@@ -2,7 +2,6 @@
 @inherits ShoelaceInputBase<string?>
 
 <sl-input @ref="Element"
-          @attributes="AdditionalAttributes"
           id="@Id"
           class="@Class"
           style="@Style"
@@ -39,6 +38,7 @@
           @onslchange="ChangeHandlerAsync"
           @onslinput="InputHandlerAsync"
           @onslinvalid="InvalidHandlerAsync"
-          @onslclear="ClearHandlerAsync">
+          @onslclear="ClearHandlerAsync"
+          @attributes="AdditionalAttributes">
     @ChildContent
 </sl-input>

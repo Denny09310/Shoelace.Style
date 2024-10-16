@@ -1,5 +1,9 @@
 const events = [
     {
+        name: 'slclose',
+        browserEventName: 'sl-close',
+    },
+    {
         name: 'slcopy',
         browserEventName: 'sl-copy',
     },
@@ -42,6 +46,20 @@ const events = [
     {
         name: 'slinitialfocus',
         browserEventName: 'sl-initial-focus',
+    },
+    {
+        name: 'sltabhide',
+        browserEventName: 'sl-tab-hide',
+        createEventArgs: ({ detail }) => ({
+            Name: detail.name
+        })
+    },
+    {
+        name: 'sltabshow',
+        browserEventName: 'sl-tab-show',
+        createEventArgs: ({ detail }) => ({
+            Name: detail.name
+        })
     },
     {
         name: 'slrequestclose',
@@ -117,7 +135,7 @@ export function beforeStart() {
     const stylesheet = document.createElement('link');
 
     stylesheet.rel = "stylesheet";
-    stylesheet.href = "_content/Shoelace.Style/index.css"
+    stylesheet.href = "_content/Shoelace.Style/Shoelace.Style.styles.css"
 
     document.head.appendChild(stylesheet);
 }

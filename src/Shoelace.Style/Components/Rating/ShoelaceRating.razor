@@ -3,9 +3,8 @@
 @typeparam TValue
 
 <sl-rating @ref="Element"
-           @attributes="AdditionalAttributes"
-           class="@Class"
            id="@Id"
+           class="@Class"
            style="@Style"
            value="@FormattedValue"
            disabled="@Disabled"
@@ -17,4 +16,5 @@
            @onslinvalid="InvalidHandlerAsync"
            @onslblur="BlurHandlerAsync"
            @onslfocus="FocusHandlerAsync"
-           @onslhover="HoverHandlerAsync"></sl-rating>
+           @onslhover="HoverHandlerAsync"
+           @attributes="AdditionalAttributes"></sl-rating>

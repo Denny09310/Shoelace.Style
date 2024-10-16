@@ -2,9 +2,8 @@
 @inherits ShoelaceComponentBase
 
 <sl-copy-button @ref="Element"
-                @attributes="AdditionalAttributes"
-                class="@Class"
                 id="@Id"
+                class="@Class"
                 style="@Style"
                 copy-label="@CopyLabel"
                 disabled="@Disabled"
@@ -16,6 +15,7 @@
                 tooltip-placement="@TooltipPlacement"
                 valu="@Value"
                 @onslcopy="CopyHandlerAsync"
-                @onslerror="ErrorHandlerAsync">
+                @onslerror="ErrorHandlerAsync"
+                @attributes="AdditionalAttributes">
     @ChildContent
 </sl-copy-button>
