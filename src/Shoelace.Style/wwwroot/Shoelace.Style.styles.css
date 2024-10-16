@@ -12,54 +12,31 @@
 
 
 /* user invalid styles */
-sl-input[data-user-invalid]::part(base),
-sl-select[data-user-invalid]::part(combobox),
-sl-checkbox[data-user-invalid]::part(control) {
+sl-input[aria-invalid]::part(base),
+sl-select[aria-invalid]::part(combobox),
+sl-checkbox[aria-invalid]::part(control) {
     border-color: var(--sl-color-danger-600);
 }
 
-[data-user-invalid]::part(form-control-label),
-[data-user-invalid]::part(form-control-help-text),
-sl-checkbox[data-user-invalid]::part(label) {
+[aria-invalid]::part(form-control-label),
+[aria-invalid]::part(form-control-help-text),
+sl-checkbox[aria-invalid]::part(label) {
     color: var(--sl-color-danger-700);
 }
 
-sl-checkbox[data-user-invalid]::part(control) {
+sl-checkbox[aria-invalid]::part(control) {
     outline: none;
 }
 
-sl-input:focus-within[data-user-invalid]::part(base),
-sl-select:focus-within[data-user-invalid]::part(combobox),
-sl-checkbox:focus-within[data-user-invalid]::part(control) {
+sl-input:focus-within[aria-invalid]::part(base),
+sl-select:focus-within[aria-invalid]::part(combobox),
+sl-checkbox:focus-within[aria-invalid]::part(control) {
     border-color: var(--sl-color-danger-600);
     box-shadow: 0 0 0 var(--sl-focus-ring-width) var(--sl-color-danger-300);
 }
 
 .validation-message {
     color: var(--sl-color-danger-600);
-}
-
-/* User valid styles */
-sl-input[data-user-valid]::part(base),
-sl-select[data-user-valid]::part(combobox),
-sl-checkbox[data-user-valid]::part(control) {
-    border-color: var(--sl-color-success-600);
-}
-
-[data-user-valid]::part(form-control-label),
-[data-user-valid]::part(form-control-help-text),
-sl-checkbox[data-user-valid]::part(label) {
-    color: var(--sl-color-success-700);
-}
-
-sl-checkbox[data-user-valid]::part(control) {
-    background-color: var(--sl-color-success-600);
-    outline: none;
-}
-
-sl-input:focus-within[data-user-valid]::part(base),
-sl-select:focus-within[data-user-valid]::part(combobox),
-sl-checkbox:focus-within[data-user-valid]::part(control) {
-    border-color: var(--sl-color-success-600);
-    box-shadow: 0 0 0 var(--sl-focus-ring-width) var(--sl-color-success-300);
+    font-size: var(--sl-input-help-text-font-size-medium);
+    margin-top: var(--sl-spacing-3x-small);
 }

@@ -1,24 +1,3 @@
 ﻿@page "/"
-@using System.ComponentModel.DataAnnotations
 
 <PageTitle>Shoelace Styles Demo | Home</PageTitle>
-
-<EditForm Model="@model">
-    <DataAnnotationsValidator />
-
-    <ShoelaceInput @bind-Value="model.Username" />
-    <ValidationMessage For="@(() => model.Username)" />
-
-    <ShoelaceButton Type="submit">Submit</ShoelaceButton>
-</EditForm>
-
-@code
-{
-    private FormModel model = new();
-
-    private sealed class FormModel
-    {
-        [Required]
-        public string Username { get; set; } = default!;
-    }
-}
