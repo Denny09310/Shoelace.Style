@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.1] - 2024-10-16
+
+### 🐛 Bug Fixes
+
+- CloseAsync should be called only for dialogs instantiated by the provider
+
 ## [1.7.0] - 2024-10-16
 
 ### 🚀 Features
@@ -12,6 +18,7 @@ All notable changes to this project will be documented in this file.
 ### ⚙️ Miscellaneous Tasks
 
 - Reoredered events
+- Bump version, updated CHANGELOG.md, updated README.md
 
 ## [1.6.0] - 2024-10-16
 
