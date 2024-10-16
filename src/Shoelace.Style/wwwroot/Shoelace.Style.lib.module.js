@@ -20,6 +20,10 @@ const events = [
         browserEventName: 'sl-hide',
     },
     {
+        name: 'slremove',
+        browserEventName: 'sl-remove',
+    },
+    {
         name: 'slafterhide',
         browserEventName: 'sl-after-hide',
     },

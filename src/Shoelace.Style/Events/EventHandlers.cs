@@ -30,5 +30,6 @@ namespace Shoelace.Style.Events;
 [EventHandler("onslclose", typeof(EventArgs), true, true)]
 [EventHandler("onsltabhide", typeof(TabHideEventArgs), true, true)]
 [EventHandler("onsltabshow", typeof(TabShowEventArgs), true, true)]
+[EventHandler("onslremove", typeof(EventArgs), true, true)]
 
 public static class EventHandlers;
