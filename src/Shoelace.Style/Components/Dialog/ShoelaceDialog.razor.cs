@@ -134,7 +134,7 @@ public partial class ShoelaceDialog : ShoelacePresentableBase
         
         if (Provider != null)
         {
-            await CloseAsync();
+            await CloseAsync(DialogResult.Cancel());
         }
     }
 
