@@ -121,7 +121,7 @@ public class ToastService(IJSRuntime js) : IToastService, IAsyncDisposable
         await ToastAsync(message, new ToastOptions { Variant = "warning", Icon = "exclamation-triangle" });
     }
 
-    private async Task<IJSObjectReference> ImportModuleAsync() => _module ??= await js.InvokeAsync<IJSObjectReference>(ScriptPath);
+    private async Task<IJSObjectReference> ImportModuleAsync() => _module ??= await js.InvokeAsync<IJSObjectReference>("import", ScriptPath);
 }
 
 /// <summary>
