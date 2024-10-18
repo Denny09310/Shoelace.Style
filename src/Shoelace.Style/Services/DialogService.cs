@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.Extensions.DependencyInjection;
 using Shoelace.Style.Components;
 using Shoelace.Style.Utilities;
@@ -410,6 +412,7 @@ public class DialogService : IDialogService
             return dialogReference;
         }
     }
+
     private sealed class DialogHelperComponent : BaseHelperComponent<DialogHelperComponent>;
 }
 
@@ -425,4 +428,70 @@ public static class DialogServiceExtensions
     /// <returns>The updated service collection.</returns>
     public static IServiceCollection AddDialogService(this IServiceCollection services)
         => services.AddScoped<IDialogService, DialogService>();
+
+    /// <summary>
+    /// Shows a default messagebox.
+    /// </summary>
+    /// <param name="service"></param>
+    /// <param name="message"></param>
+    /// <param name="title"></param>
+    /// <returns></returns>
+    public static Task<IDialogReference> ShowMessageBoxAsync(this IDialogService service, string message, string title = "")
+    {
+        var parameters = new DialogParameters
+        {
+            [nameof(ShoelaceMessageBox.Message)] = message,
+        };
+
+        return service.ShowAsync<ShoelaceMessageBox>(title, parameters);
+    }
+
+    private sealed class ShoelaceMessageBox : ShoelaceComponentBase
+    {
+        [CascadingParameter]
+        public ShoelaceDialog Dialog { get; set; } = default!;
+
+        [Parameter]
+        public string Message { get; set; } = default!;
+
+        protected override void BuildRenderTree(RenderTreeBuilder builder)
+        {
+            int i = 0;
+
+            builder.OpenElement(i++, "p");
+            builder.AddContent(i++, Message);
+            builder.CloseElement();
+
+            builder.OpenElement(i++, "div");
+            builder.AddAttribute(i++, "style", "display: flex; align-items: center; justify-content: end; gap: 1rem;");
+
+            builder.OpenComponent<ShoelaceButton>(i++);
+            builder.AddComponentParameter(i++, nameof(Style), "min-width: 5rem;");
+            builder.AddComponentParameter(i++, nameof(ShoelaceButton.Variant), "primary");
+            builder.AddComponentParameter(i++, nameof(ShoelaceButton.ChildContent), GetButtonContent("Yes"));
+            builder.AddAttribute(i++, "onclick", EventCallback.Factory.Create(this, Submit));
+            builder.CloseComponent();
+
+            builder.OpenComponent<ShoelaceButton>(i++);
+            builder.AddComponentParameter(i++, nameof(Style), "min-width: 5rem;");
+            builder.AddComponentParameter(i, nameof(ShoelaceButton.ChildContent), GetButtonContent("No"));
+            builder.AddAttribute(i, "onclick", EventCallback.Factory.Create(this, Cancel));
+            builder.CloseComponent();
+
+            builder.CloseElement();
+        }
+
+        private static RenderFragment GetButtonContent(string content)
+        {
+            return new RenderFragment(builder =>
+            {
+                int i = 0;
+                builder.AddContent(i, content);
+            });
+        }
+
+        private async Task Cancel() => await Dialog.CloseAsync(DialogResult.Cancel());
+
+        private async Task Submit() => await Dialog.CloseAsync(DialogResult.Ok(true));
+    }
 }
