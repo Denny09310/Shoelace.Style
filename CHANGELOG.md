@@ -2,11 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.8.0] - 2024-10-18
+
+### 🚀 Features
+
+- Added messageboxes
+
+### 🐛 Bug Fixes
+
+- Sl-on-request-close should give a DialogResult of cancel
+
 ## [1.7.1] - 2024-10-16
 
 ### 🐛 Bug Fixes
 
 - CloseAsync should be called only for dialogs instantiated by the provider
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump version, update CHANGELOG.md
 
 ## [1.7.0] - 2024-10-16
 
