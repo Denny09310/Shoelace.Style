@@ -1,7 +1,7 @@
 import {
   registerTranslation
-} from "../chunks/chunk.O27EHOBW.js";
-import "../chunks/chunk.625AWUY7.js";
+} from "../chunks/chunk.TDEXDIPB.js";
+import "../chunks/chunk.W27M6RDR.js";
 
 // src/translations/cs.ts
 var translation = {
@@ -20,10 +20,8 @@ var translation = {
   loading: "Nahr\xE1v\xE1 se",
   nextSlide: "Dal\u0161\xED slide",
   numOptionsSelected: (num) => {
-    if (num === 0)
-      return "Nejsou vybr\xE1ny \u017E\xE1dn\xE9 mo\u017Enosti";
-    if (num === 1)
-      return "Je vybr\xE1na jedna mo\u017Enost";
+    if (num === 0) return "Nejsou vybr\xE1ny \u017E\xE1dn\xE9 mo\u017Enosti";
+    if (num === 1) return "Je vybr\xE1na jedna mo\u017Enost";
     return `Po\u010Det vybran\xFDch mo\u017Enost\xED: ${num}`;
   },
   previousSlide: "P\u0159edchoz\xED slide",

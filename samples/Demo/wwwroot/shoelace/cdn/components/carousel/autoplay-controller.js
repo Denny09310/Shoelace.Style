@@ -1,7 +1,7 @@
 import {
   AutoplayController
 } from "../../chunks/chunk.F4VGSDIW.js";
-import "../../chunks/chunk.625AWUY7.js";
+import "../../chunks/chunk.W27M6RDR.js";
 export {
   AutoplayController
 };

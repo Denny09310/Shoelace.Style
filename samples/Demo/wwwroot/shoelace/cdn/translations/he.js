@@ -1,9 +1,9 @@
-import "../chunks/chunk.NH3SRVOC.js";
-import "../chunks/chunk.QPSNFEB2.js";
+import "../chunks/chunk.2SU6QBUU.js";
+import "../chunks/chunk.DT2WPFWO.js";
 import {
   registerTranslation
-} from "../chunks/chunk.O27EHOBW.js";
-import "../chunks/chunk.625AWUY7.js";
+} from "../chunks/chunk.TDEXDIPB.js";
+import "../chunks/chunk.W27M6RDR.js";
 
 // src/translations/he.ts
 var translation = {
@@ -22,10 +22,8 @@ var translation = {
   loading: "\u05D8\u05D5\u05E2\u05DF",
   nextSlide: "Next slide",
   numOptionsSelected: (num) => {
-    if (num === 0)
-      return "\u05DC\u05D0 \u05E0\u05D1\u05D7\u05E8\u05D5 \u05D0\u05E4\u05E9\u05E8\u05D5\u05D9\u05D5\u05EA";
-    if (num === 1)
-      return "\u05E0\u05D1\u05D7\u05E8\u05D4 \u05D0\u05E4\u05E9\u05E8\u05D5\u05EA \u05D0\u05D7\u05EA";
+    if (num === 0) return "\u05DC\u05D0 \u05E0\u05D1\u05D7\u05E8\u05D5 \u05D0\u05E4\u05E9\u05E8\u05D5\u05D9\u05D5\u05EA";
+    if (num === 1) return "\u05E0\u05D1\u05D7\u05E8\u05D4 \u05D0\u05E4\u05E9\u05E8\u05D5\u05EA \u05D0\u05D7\u05EA";
     return `\u05E0\u05D1\u05D7\u05E8\u05D5 ${num} \u05D0\u05E4\u05E9\u05E8\u05D5\u05D9\u05D5\u05EA`;
   },
   previousSlide: "Previous slide",

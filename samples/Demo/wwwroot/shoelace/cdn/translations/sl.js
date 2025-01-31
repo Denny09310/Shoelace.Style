@@ -1,7 +1,7 @@
 import {
   registerTranslation
-} from "../chunks/chunk.O27EHOBW.js";
-import "../chunks/chunk.625AWUY7.js";
+} from "../chunks/chunk.TDEXDIPB.js";
+import "../chunks/chunk.W27M6RDR.js";
 
 // src/translations/sl.ts
 var translation = {
@@ -20,14 +20,10 @@ var translation = {
   loading: "Nalaganje",
   nextSlide: "Naslednji diapozitiv",
   numOptionsSelected: (num) => {
-    if (num === 0)
-      return "Nobena mo\u017Enost ni izbrana";
-    if (num === 1)
-      return "1 mo\u017Enost izbrana";
-    if (num === 2)
-      return "2 mo\u017Enosti izbrani";
-    if (num === 3 || num === 4)
-      return `${num} mo\u017Enosti izbrane`;
+    if (num === 0) return "Nobena mo\u017Enost ni izbrana";
+    if (num === 1) return "1 mo\u017Enost izbrana";
+    if (num === 2) return "2 mo\u017Enosti izbrani";
+    if (num === 3 || num === 4) return `${num} mo\u017Enosti izbrane`;
     return `${num} mo\u017Enosti izbranih`;
   },
   previousSlide: "Prej\u0161nji diapozitiv",
