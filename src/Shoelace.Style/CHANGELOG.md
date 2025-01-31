@@ -1,0 +1,238 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## [1.9.1] - 2025-01-31
+
+### 🐛 Bug Fixes
+
+- Updated nuget/cdn version on README.md
+
+## [1.9.0] - 2025-01-31
+
+### 🚀 Features
+
+- Is now possible to prevent the closing of a dialog
+
+### 🐛 Bug Fixes
+
+- Wrong import command for toast service
+- Disposing correctly of unused resources
+
+### ⚙️ Miscellaneous Tasks
+
+- Support .net 9
+- Versionamento, aggiornato CHANGELOG.md
+
+## [1.8.0] - 2024-10-18
+
+### 🚀 Features
+
+- Added messageboxes
+
+### 🐛 Bug Fixes
+
+- Sl-on-request-close should give a DialogResult of cancel
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump version, update CHANGELOG.md
+
+## [1.7.1] - 2024-10-16
+
+### 🐛 Bug Fixes
+
+- CloseAsync should be called only for dialogs instantiated by the provider
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump version, update CHANGELOG.md
+
+## [1.7.0] - 2024-10-16
+
+### 🚀 Features
+
+- Added tab group state, added programmatic tab navigation
+- Added sl-tag, added sl-remove event registration
+
+### ⚙️ Miscellaneous Tasks
+
+- Reoredered events
+- Bump version, updated CHANGELOG.md, updated README.md
+
+## [1.6.0] - 2024-10-16
+
+### 🚀 Features
+
+- Added sl-tab, added sl-close event registration
+- Added sl-tab-group, added sl-tab-hide and sl-tab-show registration
+- Added closable behavior, moved components in one folder
+
+### 🐛 Bug Fixes
+
+- Invalid form styles, revert back to aria-invalid
+- Missing EventArgs inheritance on events
+- Wrong usage of lazy values
+
+### ⚙️ Miscellaneous Tasks
+
+- Better naming for static files
+- Changed attributes to shoelace ones
+- Reordered attributes to better fit guidelines, cleanup
+- Added documentation for sl-tab-show/sl-tab-hidden
+- Bump version, updated CHANGELOG.md, updated README.md
+
+## [1.5.0] - 2024-10-15
+
+### 🚀 Features
+
+- Add sl-progress-bar
+- Sl-progress-ring
+- Added sl-menu
+- Added sl-menu-item
+- Added sl-menu-label
+
+### 🐛 Bug Fixes
+
+- Revert sl-animated-image play state detection
+- Missing @attributes parameter on sl-drawer
+- Xml documentation typo
+
+### ⚙️ Miscellaneous Tasks
+
+- Removed unusued documentation
+- Bump version, updated CHANGELOG.md, updated README.md
+
+## [1.4.0] - 2024-10-15
+
+### 🚀 Features
+
+- Added sl-drawer
+- Added ShoelaceDrawerProvider for global drawer injection
+
+### 🐛 Bug Fixes
+
+- Missing event handlers registration
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump version, updated CHANGELOG.md, updated README.md
+
+## [1.3.1] - 2024-10-15
+
+### 🚜 Refactor
+
+- Removed shoelace cdn from inside the nuget package
+- Removed most of the Blazor.Javascript.Interop.Extensions method in favor of the native EventHandlers
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump version, updated CHANGELOG.md, updated README.md
+
+## [1.3.0] - 2024-10-10
+
+### 🚀 Features
+
+- Add sl-resize-observer
+- Add sl-switch
+- Add sl-textarea
+- Add sl-tooltip
+
+### 🐛 Bug Fixes
+
+- Attribute 'readonly' missing on sl-input
+
+### ⚙️ Miscellaneous Tasks
+
+- Format code style
+- Versioning 1.0.3
+
+## [1.2.0] - 2024-10-07
+
+### 🚀 Features
+
+- Add sl-icon
+- Add sl-icon-button
+- Add sl-option
+- Add sl-input, add IClearable interface
+- Add sl-radio
+- Add sl-radio-group
+- Add sl-radio-button
+- Add sl-rating
+- Add sl-relative-time
+- Add sl-range
+
+### 🐛 Bug Fixes
+
+- Add documentation to sl-color-picker
+- Wrong component name
+
+### ⚙️ Miscellaneous Tasks
+
+- Change 'TValue' to only 'T'
+- Versioning
+
+## [1.1.0] - 2024-10-03
+
+### 🚀 Features
+
+- Add sl-format-bytes
+- Add sl-format-date
+- Add sl-format-number
+
+### 🐛 Bug Fixes
+
+- Add missing attributes to sl-format-bytes
+
+### ⚙️ Miscellaneous Tasks
+
+- Versioning
+
+### Rework
+
+- Change "Valid values are" in "Possible values are"
+
+## [1.0.1] - 2024-10-03
+
+### 🚀 Features
+
+- Add shoelace base component
+- Add initial shoelace button
+- Add sl-input, add base input component, add sl-change event args
+- Add sl-alert
+- Add toast service, remove static sl-alert toast
+- Add sl-dialog, fix presentable not changing the Open property value
+- Add initial sl-dialog-provider
+- Fix sl-dialog-provider, add DialogService, add DialogResult, add DilaogReference
+- Add sl-spinner
+- Add sl-animated-image
+- Add sl-avatar, add css styling rule
+- Add sl-badge
+- Add sl-breadcrumb, add sl-breadcrumb-item
+- Add sl-button-group
+- Add sl-card
+- Add sl-checkbox
+- Add sl-copy-button
+- Add sl-color-picker
+- Add sl-details
+- Add sl-divider
+- Add sl-dropdown
+
+### 🐛 Bug Fixes
+
+- Minor changes sl-dialog-provider
+- Dialog flashing due to css rule missing
+- Minor xml docs change
+- Checkboax inherit made string cause that represent the value attribute
+- Add missing attributes sl-details
+- Correct nuget version
+
+### ⚙️ Miscellaneous Tasks
+
+- Nuget versioning
+- Add xml docs
+- Versioning
+- Initialized git cliff
+- Versioning
+
+<!-- generated by git-cliff -->
