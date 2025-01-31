@@ -1,5 +1,6 @@
 @namespace Shoelace.Style.Components
 @inherits ShoelacePresentableBase
+@inject IJSRuntime JSRuntime
 
 <sl-dialog @ref="Element"
            id="@Id"
@@ -13,7 +14,6 @@
            @onslhide="HideHandlerAsync"
            @onslafterhide="AfterHideHandlerAsync"
            @onslinitialfocus="InitialFocusHandlerAsync"
-           @onslrequestclose="RequestCloseHandlerAsync"
            @attributes="AdditionalAttributes">
     <CascadingValue Value="this">
         @ChildContent
