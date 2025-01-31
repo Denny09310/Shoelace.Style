@@ -1,7 +1,7 @@
 import {
   registerTranslation
-} from "../chunks/chunk.O27EHOBW.js";
-import "../chunks/chunk.625AWUY7.js";
+} from "../chunks/chunk.TDEXDIPB.js";
+import "../chunks/chunk.W27M6RDR.js";
 
 // src/translations/id.ts
 var translation = {
@@ -20,10 +20,8 @@ var translation = {
   loading: "Memuat",
   nextSlide: "Slide berikutnya",
   numOptionsSelected: (num) => {
-    if (num === 0)
-      return "Tidak ada opsi yang dipilih";
-    if (num === 1)
-      return "1 opsi yang dipilih";
+    if (num === 0) return "Tidak ada opsi yang dipilih";
+    if (num === 1) return "1 opsi yang dipilih";
     return `${num} opsi yang dipilih`;
   },
   previousSlide: "Slide sebelumnya",

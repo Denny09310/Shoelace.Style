@@ -1,9 +1,9 @@
-import "../chunks/chunk.NH3SRVOC.js";
-import "../chunks/chunk.QPSNFEB2.js";
+import "../chunks/chunk.2SU6QBUU.js";
+import "../chunks/chunk.DT2WPFWO.js";
 import {
   registerTranslation
-} from "../chunks/chunk.O27EHOBW.js";
-import "../chunks/chunk.625AWUY7.js";
+} from "../chunks/chunk.TDEXDIPB.js";
+import "../chunks/chunk.W27M6RDR.js";
 
 // src/translations/nl.ts
 var translation = {
@@ -22,10 +22,8 @@ var translation = {
   loading: "Bezig met laden",
   nextSlide: "Volgende dia",
   numOptionsSelected: (num) => {
-    if (num === 0)
-      return "Geen optie geselecteerd";
-    if (num === 1)
-      return "1 optie geselecteerd";
+    if (num === 0) return "Geen optie geselecteerd";
+    if (num === 1) return "1 optie geselecteerd";
     return `${num} opties geselecteerd`;
   },
   previousSlide: "Vorige dia",

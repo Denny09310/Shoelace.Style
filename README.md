@@ -16,7 +16,7 @@ This repository contains Blazor components built on top of the [Shoelace](https:
 1. Install the nuget package:
 
    ```bash
-   dotnet add package Shoelace.Style --version 1.0.0.4
+   dotnet add package Shoelace.Style --version 1.9.1
    ```
 
 2. Download the latest version of the <code>@shoelace-style</code> package. We suggest using libman with this configuration:
@@ -27,7 +27,7 @@ This repository contains Blazor components built on top of the [Shoelace](https:
      "defaultProvider": "jsdelivr",
      "libraries": [
        {
-         "library": "@shoelace-style/shoelace@2.17.1",
+         "library": "@shoelace-style/shoelace@2.19.1",
          "destination": "wwwroot/shoelace/",
          "files": [
            "cdn/!(react)/**/*.{js,svg,css}",

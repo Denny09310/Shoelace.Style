@@ -1,7 +1,7 @@
 import {
   registerTranslation
-} from "../chunks/chunk.O27EHOBW.js";
-import "../chunks/chunk.625AWUY7.js";
+} from "../chunks/chunk.TDEXDIPB.js";
+import "../chunks/chunk.W27M6RDR.js";
 
 // src/translations/it.ts
 var translation = {
@@ -20,10 +20,8 @@ var translation = {
   loading: "In caricamento",
   nextSlide: "Prossima diapositiva",
   numOptionsSelected: (num) => {
-    if (num === 0)
-      return "Nessuna opzione selezionata";
-    if (num === 1)
-      return "1 opzione selezionata";
+    if (num === 0) return "Nessuna opzione selezionata";
+    if (num === 1) return "1 opzione selezionata";
     return `${num} opzioni selezionate`;
   },
   previousSlide: "Diapositiva precedente",

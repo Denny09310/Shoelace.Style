@@ -1,9 +1,9 @@
-import "../chunks/chunk.NH3SRVOC.js";
-import "../chunks/chunk.QPSNFEB2.js";
+import "../chunks/chunk.2SU6QBUU.js";
+import "../chunks/chunk.DT2WPFWO.js";
 import {
   registerTranslation
-} from "../chunks/chunk.O27EHOBW.js";
-import "../chunks/chunk.625AWUY7.js";
+} from "../chunks/chunk.TDEXDIPB.js";
+import "../chunks/chunk.W27M6RDR.js";
 
 // src/translations/ru.ts
 var translation = {
@@ -22,10 +22,8 @@ var translation = {
   loading: "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430",
   nextSlide: "\u0421\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439 \u0441\u043B\u0430\u0439\u0434",
   numOptionsSelected: (num) => {
-    if (num === 0)
-      return "\u0432\u044B\u0431\u0440\u0430\u043D\u043E 0 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u043E\u0432";
-    if (num === 1)
-      return "\u0412\u044B\u0431\u0440\u0430\u043D 1 \u0432\u0430\u0440\u0438\u0430\u043D\u0442";
+    if (num === 0) return "\u0432\u044B\u0431\u0440\u0430\u043D\u043E 0 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u043E\u0432";
+    if (num === 1) return "\u0412\u044B\u0431\u0440\u0430\u043D 1 \u0432\u0430\u0440\u0438\u0430\u043D\u0442";
     return `\u0432\u044B\u0431\u0440\u0430\u043D\u043E ${num} \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0430`;
   },
   previousSlide: "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0441\u043B\u0430\u0439\u0434",

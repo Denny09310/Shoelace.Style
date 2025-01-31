@@ -1,9 +1,9 @@
-import "../chunks/chunk.NH3SRVOC.js";
-import "../chunks/chunk.QPSNFEB2.js";
+import "../chunks/chunk.2SU6QBUU.js";
+import "../chunks/chunk.DT2WPFWO.js";
 import {
   registerTranslation
-} from "../chunks/chunk.O27EHOBW.js";
-import "../chunks/chunk.625AWUY7.js";
+} from "../chunks/chunk.TDEXDIPB.js";
+import "../chunks/chunk.W27M6RDR.js";
 
 // src/translations/da.ts
 var translation = {
@@ -22,10 +22,8 @@ var translation = {
   loading: "Indl\xE6ser",
   nextSlide: "N\xE6ste slide",
   numOptionsSelected: (num) => {
-    if (num === 0)
-      return "Ingen valgt";
-    if (num === 1)
-      return "1 valgt";
+    if (num === 0) return "Ingen valgt";
+    if (num === 1) return "1 valgt";
     return `${num} valgt`;
   },
   previousSlide: "Forrige dias",

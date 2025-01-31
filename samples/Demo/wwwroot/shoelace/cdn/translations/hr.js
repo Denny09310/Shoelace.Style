@@ -1,7 +1,7 @@
 import {
   registerTranslation
-} from "../chunks/chunk.O27EHOBW.js";
-import "../chunks/chunk.625AWUY7.js";
+} from "../chunks/chunk.TDEXDIPB.js";
+import "../chunks/chunk.W27M6RDR.js";
 
 // src/translations/hr.ts
 var translation = {
@@ -20,10 +20,8 @@ var translation = {
   loading: "U\u010Ditavanje",
   nextSlide: "Sljede\u0107i slajd",
   numOptionsSelected: (num) => {
-    if (num === 0)
-      return "Nije odabrana nijedna opcija";
-    if (num === 1)
-      return "1 opcija je odabrana";
+    if (num === 0) return "Nije odabrana nijedna opcija";
+    if (num === 1) return "1 opcija je odabrana";
     return `${num} odabranih opcija`;
   },
   previousSlide: "Prethodni slajd",
