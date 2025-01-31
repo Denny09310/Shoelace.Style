@@ -11,7 +11,7 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/tab-group"/>
 /// </remarks>
-public partial class ShoelaceTabGroup : ShoelaceComponentBase
+public partial class ShoelaceTabGroup : ShoelaceComponentBase, IAsyncDisposable
 {
     private const string ScriptModule = "./_content/Shoelace.Style/scripts/shoelace-tab-group-interop.js";
 
@@ -80,6 +80,17 @@ public partial class ShoelaceTabGroup : ShoelaceComponentBase
     public EventCallback<TabShowEventArgs> OnTabShow { get; set; }
 
     #endregion Events
+
+    /// <inheritdoc/>
+    public async ValueTask DisposeAsync()
+    {
+        if (_reference != null)
+        {
+            await _reference.DisposeAsync();
+        }
+
+        GC.SuppressFinalize(this);
+    }
 
     /// <summary>
     /// Registers a tab panel to be associated with its corresponding tab.
