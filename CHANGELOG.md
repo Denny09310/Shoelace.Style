@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.9.0] - 2025-01-31
+
+### 🚀 Features
+
+- Is now possible to prevent the closing of a dialog
+
+### 🐛 Bug Fixes
+
+- Wrong import command for toast service
+- Disposing correctly of unused resources
+
+### ⚙️ Miscellaneous Tasks
+
+- Support .net 9
+
 ## [1.8.0] - 2024-10-18
 
 ### 🚀 Features
@@ -11,6 +26,10 @@ All notable changes to this project will be documented in this file.
 ### 🐛 Bug Fixes
 
 - Sl-on-request-close should give a DialogResult of cancel
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump version, update CHANGELOG.md
 
 ## [1.7.1] - 2024-10-16
 

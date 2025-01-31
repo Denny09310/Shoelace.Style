@@ -2,6 +2,7 @@
 using Microsoft.JSInterop;
 using Shoelace.Style.Events;
 using Shoelace.Style.Services;
+using System.Diagnostics;
 
 namespace Shoelace.Style.Components;
 
@@ -11,8 +12,12 @@ namespace Shoelace.Style.Components;
 /// <remarks>
 /// <see href="https://shoelace.style/components/dialog"/>
 /// </remarks>
-public partial class ShoelaceDialog : ShoelacePresentableBase
+public partial class ShoelaceDialog : ShoelacePresentableBase, IAsyncDisposable
 {
+    private const string ScriptModule = "./_content/Shoelace.Style/scripts/shoelace-dialog-interop.js";
+
+    private DotNetObjectReference<ShoelaceDialog>? _instance;
+    private IJSObjectReference? _reference;
     /// <summary>
     /// The content of the dialog.
     /// </summary>
@@ -60,7 +65,7 @@ public partial class ShoelaceDialog : ShoelacePresentableBase
     /// Avoid using this unless closing the dialog will result in destructive behavior such as data loss.
     /// </summary>
     [Parameter]
-    public EventCallback<RequestCloseEventArgs> OnRequestClose { get; set; }
+    public EventCallback<RequestCloseContext> OnRequestClose { get; set; }
 
     #endregion Events
 
@@ -104,7 +109,41 @@ public partial class ShoelaceDialog : ShoelacePresentableBase
 
         Provider?.DismissInstance(Id, result);
     }
+    
+    /// <inheritdoc/>
+    public async ValueTask DisposeAsync()
+    {
+        _instance?.Dispose();
 
+        if (_reference != null)
+        {
+            await _reference.DisposeAsync();
+        }
+
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Handler for <see cref="OnRequestClose"/> event.
+    /// </summary>
+    /// <remarks>
+    /// This substitute the @onslrequestclose directly on the component 
+    /// with a js controlled one
+    /// </remarks>
+    [DebuggerHidden]
+    [JSInvokable("request-close-callback")]
+    public virtual async ValueTask<bool> RequestCloseHandlerAsync(RequestCloseEventArgs e)
+    {
+        var context = new RequestCloseContext(e);
+        await OnRequestClose.InvokeAsync(context);
+
+        if (Provider != null)
+        {
+            await CloseAsync(DialogResult.Cancel());
+        }
+
+        return context.Prevented;
+    }
 
     /// <summary>
     /// Handler for <see cref="OnInitialFocus"/> event.
@@ -117,27 +156,22 @@ public partial class ShoelaceDialog : ShoelacePresentableBase
     {
         await base.OnAfterRenderAsync(firstRender);
 
-        if (firstRender && Provider != null)
+        if (firstRender)
         {
-            await Task.Delay(125);
-            await SetOpen(true);
+            var module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", ScriptModule);
+
+            _instance = DotNetObjectReference.Create(this);
+            _reference = await module.InvokeAsync<IJSObjectReference>("init", Element, _instance);
+
+            await module.DisposeAsync();
+
+            if (Provider != null)
+            {
+                await Task.Delay(125);
+                await SetOpen(true);
+            }
         }
     }
-
-    /// <summary>
-    /// Handler for <see cref="OnRequestClose"/> event.
-    /// </summary>
-    /// <returns></returns>
-    protected virtual async Task RequestCloseHandlerAsync(RequestCloseEventArgs e)
-    {
-        await OnRequestClose.InvokeAsync(e);
-        
-        if (Provider != null)
-        {
-            await CloseAsync(DialogResult.Cancel());
-        }
-    }
-
     private async Task SetOpen(bool open)
     {
         Open = open;
@@ -176,6 +210,16 @@ public class Modal(IJSObjectReference reference)
     public ValueTask ActivateExternalAsync() => _reference.InvokeVoidAsync("activateExternal");
 
     public ValueTask DeactivateExternalAsync() => _reference.InvokeVoidAsync("deactivateExternal");
+}
+
+public class RequestCloseContext(RequestCloseEventArgs e)
+{
+    public RequestCloseEventArgs Event { get; } = e;
+    public bool Prevented { get; private set; }
+    public void PreventDefault()
+    {
+        Prevented = true;
+    }
 }
 
 #pragma warning restore CS1591
